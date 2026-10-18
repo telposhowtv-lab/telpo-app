@@ -1,0 +1,1754 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap"/>
+  <style>
+    html, body { direction: rtl; margin: 0; background: #F8F7FC; font-family: 'IBM Plex Sans Arabic', sans-serif; }
+    *, *::before, *::after { box-sizing: border-box; }
+    @media (max-width: 640px) { .sg { grid-template-columns: 1fr !important; } }
+    @media (max-width: 640px) {
+      .tp-hero-logo { margin: 0 auto 4px !important; }
+      .tp-hero-row { gap: 0 !important; }
+      .tp-hero-text { text-align: center; flex-basis: 100% !important; margin-top: -8px; }
+      .tp-hero-img { margin: 0 auto; }
+    }
+    input, textarea, select { direction: rtl; font-family: 'IBM Plex Sans Arabic', sans-serif; text-align: right; }
+    input[type="number"] { text-align: right; }
+    input[type="date"] { direction: rtl; }
+    input:focus, textarea:focus, select:focus { border-color: #0069CA !important; outline: none; box-shadow: 0 0 0 3px rgba(0,105,202,0.07); }
+    select option { direction: rtl; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes tpWave { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @keyframes tpSpin { to { transform: rotate(360deg); } }
+    @keyframes tpPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+    a { color: #0069CA; }
+    a:hover { color: #0057A8; }
+
+  </style>
+</helmet>
+
+<div style="background: radial-gradient(900px 520px at 100% -5%, #ECE6FF 0%, rgba(236,230,255,0) 60%), radial-gradient(700px 480px at -10% 35%, #FFEFE6 0%, rgba(255,239,230,0) 60%), radial-gradient(800px 600px at 110% 85%, #F6E4FA 0%, rgba(246,228,250,0) 60%), #F8F7FC; background-attachment: fixed; min-height: 100vh; font-family: 'IBM Plex Sans Arabic', sans-serif; direction: rtl; color: #1A1733;">
+
+  <template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#0069CA"/><text x="100" y="118" font-family="sans-serif" font-size="58" font-weight="700" fill="#fff" text-anchor="middle">تلبو</text></svg></template>
+
+  <sc-if value="{{ preloaderOn }}" hint-placeholder-val="{{ true }}">
+    <div style="position: fixed; inset: 0; z-index: 10000; background: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 26px; opacity: {{ preloaderOpacity }}; transition: opacity 400ms ease;">
+      {{ preloaderLogo }}
+      {{ preloaderSpinner }}
+    </div>
+  </sc-if>
+
+  <a href="https://wa.me/601163510182?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D9%85%D8%B9%D9%83%D9%85" target="_blank" rel="noopener" aria-label="تواصل معنا عبر واتساب" title="تواصل معنا" style="position: fixed; bottom: 22px; left: 22px; z-index: 9999; width: 58px; height: 58px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(37,211,102,0.45); text-decoration: none; transition: transform 160ms ease;" style-hover="transform: scale(1.08);">
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.27.49 1.7.63.71.23 1.36.2 1.88.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.4 9.4 0 0 1-4.8-1.31l-.34-.2-3.57.93.95-3.48-.22-.36a9.43 9.43 0 0 1-1.45-5.03c0-5.2 4.24-9.44 9.45-9.44 2.52 0 4.89.99 6.67 2.77a9.38 9.38 0 0 1 2.76 6.68c0 5.21-4.24 9.44-9.44 9.44zm8.03-17.47A11.3 11.3 0 0 0 12.05.7C5.79.7.7 5.79.7 12.05c0 2 .52 3.95 1.52 5.67L.6 23.3l5.72-1.5a11.3 11.3 0 0 0 5.72 1.46h.01c6.26 0 11.35-5.09 11.35-11.35 0-3.03-1.18-5.88-3.32-8.02z"/></svg>
+  </a>
+
+  <sc-if value="{{ bookingOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position: fixed; inset: 0; z-index: 9000; background: #fff; overflow-y: auto; direction: rtl; animation: fadeUp 200ms ease;">
+      <div style="position: sticky; top: 0; z-index: 2; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid #F2F2F2;">
+        <div style="max-width: 720px; margin: 0 auto; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+          <button onClick="{{ closeBooking }}" style="display: inline-flex; align-items: center; gap: 8px; background: #0069CA; border: none; border-radius: 10px; padding: 9px 18px 9px 14px; cursor: pointer; color: #fff; font-family: 'Cairo', sans-serif; font-size: 15px; font-weight: 800; box-shadow: 0 3px 10px rgba(0,0,0,0.15);" style-hover="opacity: 0.9;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="9,18 15,12 9,6"></polyline></svg>
+            العودة
+          </button>
+          <span style="font-size: 13px; font-weight: 700; color: #64748B;">حجز الاستشارة</span>
+        </div>
+      </div>
+      <div style="max-width: 720px; margin: 0 auto; padding: 20px 20px 40px;">
+        <div style="background: #F1F6FD; border: 1.5px solid #D6E6F8; border-radius: 16px; padding: 14px 18px; margin-bottom: 16px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px;">
+          <div style="display: flex; flex-direction: column; gap: 3px;">
+            <span style="font-size: 15px; font-weight: 800; color: #1A1733;">{{ modalTitle }}</span>
+            <span style="font-size: 13.5px; font-weight: 700; color: #0069CA;">{{ bookingSummary }}</span>
+          </div>
+          <sc-if value="{{ showDurationSwitch }}" hint-placeholder-val="{{ true }}">
+            <div style="display: flex; gap: 4px; background: #fff; border: 1.5px solid #D6E6F8; border-radius: 10px; padding: 4px;">
+              <button onClick="{{ setDuration30 }}" style="border: none; border-radius: 10px; padding: 8px 14px; font-family: 'Cairo', sans-serif; font-size: 13px; font-weight: 800; cursor: pointer; background: {{ sw30Bg }}; color: {{ sw30Color }};">30 دقيقة</button>
+              <button onClick="{{ setDuration60 }}" style="border: none; border-radius: 10px; padding: 8px 14px; font-family: 'Cairo', sans-serif; font-size: 13px; font-weight: 800; cursor: pointer; background: {{ sw60Bg }}; color: {{ sw60Color }};">60 دقيقة</button>
+            </div>
+          </sc-if>
+        </div>
+        <div style="font-size: 13px; color: #64748B; font-weight: 600; margin-bottom: 10px;">اختر اليوم والوقت المناسب، وادفع مباشرة لتأكيد الحجز.</div>
+        <div style="border-radius: 16px; overflow: hidden; border: 1px solid #D6E6F8;">
+          <iframe src="{{ calendlyEmbedUrl }}" width="100%" frameborder="0" scrolling="yes" style="display: block; background: #fff; height: max(700px, calc(100vh - 230px));"></iframe>
+        </div>
+        <div style="text-align: center; padding: 16px 0 0;">
+          <a href="{{ waSupport }}" target="_blank" style="color: #64748B; font-size: 13px; font-weight: 600; text-decoration: none; border-bottom: 1px dashed #CBD5E1; padding-bottom: 1px;">تواجه مشكلة في الدفع؟ تواصل مع الدعم الفني</a>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ═══════ SCREEN 1: LANDING ═══════ -->
+  <sc-if value="{{ showLanding }}" hint-placeholder-val="{{ true }}">
+    <div style="min-height: 100vh; display: flex; flex-direction: column; animation: fadeIn 220ms ease;">
+
+      <!-- Logo + tagline -->
+      <div style="position: relative; width: 100%; overflow: hidden; background: linear-gradient(to bottom, #fff 0%, #fff 72%, rgba(255,255,255,0) 100%); padding-bottom: 70px;">
+      {{ bannerWave }}
+      <div style="position: relative; z-index: 1; max-width: 760px; margin: 0 auto; padding: 28px 20px 0; width: 100%;">
+        <img class="tp-hero-logo" src="assets/logo.webp" alt="Telposhow" style="mix-blend-mode: multiply; height: 56px; width: auto; display: block; margin: 0 0 8px;"/>
+        <div class="tp-hero-row" style="display: flex; flex-wrap: wrap-reverse; align-items: center; justify-content: center; gap: 8px 24px;">
+          <div class="tp-hero-text" style="flex: 1 1 300px; min-width: 0;">
+            <div style="font-size: 12px; font-weight: 800; letter-spacing: 0.14em; color: #0069ca; margin-bottom: 12px;">TELPO SHOW · MALAYSIA</div>
+            <h1 style="font-size: clamp(26px, 4.6vw, 36px); color: #1A1733; font-weight: 800; margin: 0 0 14px; line-height: 1.45; text-wrap: pretty;">مرحباً بك في موقع <span style="color: #f6474e;">تلبوشو</span><br/>دليلك في ماليزيا</h1>
+          </div>
+          <div class="tp-hero-img" style="flex: 0 1 300px; min-width: 220px; max-width: 320px; position: relative;">
+            <img src="assets/telpo.webp" alt="تلبو" style="width: 100%; height: auto; display: block;"/>
+            <img src="assets/tower.webp" alt="أبراج بتروناس" style="position: absolute; top: -6%; right: -8%; width: 50%; height: auto; display: block; z-index: 1;"/>
+          </div>
+        </div>
+      </div>
+      </div>
+      <div style="text-align: center; padding: 28px 24px 22px;">
+        <p style="font-size: 20px; color: #1A1733; font-weight: 700; margin: 0;">عن ماذا تبحث في ماليزيا ؟</p>
+      </div>
+
+      <!-- 2×2 grid -->
+      <div class="sg" style="max-width: 680px; margin: 0 auto; padding: 0 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; width: 100%;">
+
+        <!-- Study -->
+        <div onClick="{{ goToStudy }}" style="background: linear-gradient(150deg, #E8F1FF 0%, #D3E4FF 100%); border-radius: 18px; padding: 18px 16px; cursor: pointer; display: flex; align-items: center; gap: 12px; box-shadow: 0 10px 30px rgba(40,30,90,0.06); transition: transform 150ms, box-shadow 150ms;" style-hover="transform: translateY(-3px); box-shadow: 0 18px 40px rgba(40,30,90,0.13); background: linear-gradient(150deg, #B9D4FF 0%, #8DB8FF 100%);">
+          <div style="flex-shrink: 0; width: 48px; height: 48px; border-radius: 12px; background: rgba(255,255,255,0.85); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(40,30,90,0.06);"><svg xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 -960 960 960" width="26px" fill="#1D6FE8"><path d="M480-120 200-272v-240L40-600l440-240 440 240v320h-80v-276l-80 44v240L480-120Zm0-332 274-148-274-148-274 148 274 148Zm0 241 200-108v-151L480-360 280-470v151l200 108Zm0-241Zm0 90Zm0 0Z"></path></svg></div>
+          <div style="flex: 1; min-width: 0;">
+            <div style="font-size: 15px; color: #1A1733; font-weight: 700; line-height: 1.3; margin-bottom: 3px;">ادرس في ماليزيا</div>
+            <div style="font-size: 13px; color: #5B5872; font-weight: 500; line-height: 1.4;">الجامعات والمدارس ودراسة اللغة في ماليزيا</div>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1A1733" stroke-width="2.5" style="flex-shrink:0"><polyline points="15,18 9,12 15,6"></polyline></svg>
+        </div>
+
+        <!-- Settle -->
+        <div onClick="{{ goToSettle }}" style="background: linear-gradient(150deg, #E6F6FD 0%, #CDEBFA 100%); border-radius: 18px; padding: 18px 16px; cursor: pointer; display: flex; align-items: center; gap: 12px; box-shadow: 0 10px 30px rgba(40,30,90,0.06); transition: transform 150ms, box-shadow 150ms;" style-hover="transform: translateY(-3px); box-shadow: 0 18px 40px rgba(40,30,90,0.13); background: linear-gradient(150deg, #B3E2F8 0%, #84CEF2 100%);">
+          <div style="flex-shrink: 0; width: 48px; height: 48px; border-radius: 12px; background: rgba(255,255,255,0.85); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(40,30,90,0.06);"><svg xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 -960 960 960" width="26px" fill="#0E8BC4"><path d="m480-840 440 330-48 64-72-54v380H160v-380l-72 54-48-64 440-330ZM294-478q0 53 57 113t129 125q72-65 129-125t57-113q0-44-30-73t-72-29q-26 0-47.5 10.5T480-542q-15-17-37.5-27.5T396-580q-42 0-72 29t-30 73Zm426 278v-360L480-740 240-560v360h480Zm0 0H240h480Z"></path></svg></div>
+          <div style="flex: 1; min-width: 0;">
+            <div style="font-size: 15px; color: #1A1733; font-weight: 700; line-height: 1.3; margin-bottom: 3px;">الإقامة والانتقال لماليزيا</div>
+            <div style="font-size: 13px; color: #5B5872; font-weight: 500; line-height: 1.4;">كافة أنواع الإقامات والسكن والمعيشة</div>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1A1733" stroke-width="2.5" style="flex-shrink:0"><polyline points="15,18 9,12 15,6"></polyline></svg>
+        </div>
+
+        <!-- Invest -->
+        <div onClick="{{ goToInvest }}" style="background: linear-gradient(150deg, #EAEFFF 0%, #D5DEFF 100%); border-radius: 18px; padding: 18px 16px; cursor: pointer; display: flex; align-items: center; gap: 12px; box-shadow: 0 10px 30px rgba(40,30,90,0.06); transition: transform 150ms, box-shadow 150ms;" style-hover="transform: translateY(-3px); box-shadow: 0 18px 40px rgba(40,30,90,0.13); background: linear-gradient(150deg, #BCCBFF 0%, #93A9FF 100%);">
+          <div style="flex-shrink: 0; width: 48px; height: 48px; border-radius: 12px; background: rgba(255,255,255,0.85); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(40,30,90,0.06);"><svg xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 -960 960 960" width="26px" fill="#3B5BDB"><path d="M160-160v-320h160v320H160Zm240 0v-640h160v640H400Zm240 0v-440h160v440H640Z"></path></svg></div>
+          <div style="flex: 1; min-width: 0;">
+            <div style="font-size: 15px; color: #1A1733; font-weight: 700; line-height: 1.3; margin-bottom: 3px;">الاستثمار وتأسيس الأعمال</div>
+            <div style="font-size: 13px; color: #5B5872; font-weight: 500; line-height: 1.4;">تأسيس الشركات والفرانشيز والاستيراد</div>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1A1733" stroke-width="2.5" style="flex-shrink:0"><polyline points="15,18 9,12 15,6"></polyline></svg>
+        </div>
+
+        <!-- Sponsor -->
+        <div onClick="{{ goToSponsor }}" style="background: linear-gradient(150deg, #E5F3FF 0%, #C9E2FB 100%); border-radius: 18px; padding: 18px 16px; cursor: pointer; display: flex; align-items: center; gap: 12px; box-shadow: 0 10px 30px rgba(40,30,90,0.06); transition: transform 150ms, box-shadow 150ms;" style-hover="transform: translateY(-3px); box-shadow: 0 18px 40px rgba(40,30,90,0.13); background: linear-gradient(150deg, #ADD6FB 0%, #7FBDF5 100%);">
+          <div style="flex-shrink: 0; width: 48px; height: 48px; border-radius: 12px; background: rgba(255,255,255,0.85); display: flex; align-items: center; justify-content: center; font-size: 22px; box-shadow: 0 4px 12px rgba(40,30,90,0.06);">⭐</div>
+          <div style="flex: 1; min-width: 0;">
+            <div style="font-size: 15px; font-weight: 500; color: #1A1733; font-weight: 700; line-height: 1.3; margin-bottom: 3px;">كن راعياً حصرياً في تلبوشو</div>
+            <div style="font-size: 13px; color: #5B5872; font-weight: 500; line-height: 1.4;">رعاية إعلانية لأصحاب الأعمال</div>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1A1733" stroke-width="2.5" style="flex-shrink:0"><polyline points="15,18 9,12 15,6"></polyline></svg>
+        </div>
+
+      </div>
+
+      <!-- دليلك المبسط -->
+      <div style="max-width: 680px; margin: 14px auto 0; padding: 0 20px; width: 100%;">
+        <div onClick="{{ openGuide }}" style="background: linear-gradient(150deg, #FFECEE 0%, #FFD5DA 100%); border-radius: 18px; padding: 18px 16px; cursor: pointer; display: flex; align-items: center; gap: 12px; box-shadow: 0 10px 30px rgba(40,30,90,0.06); transition: transform 150ms, box-shadow 150ms;" style-hover="transform: translateY(-3px); box-shadow: 0 18px 40px rgba(40,30,90,0.13); background: linear-gradient(150deg, #FFB8C0 0%, #FF8E9A 100%);">
+          <div style="flex-shrink: 0; width: 48px; height: 48px; border-radius: 12px; background: rgba(255,255,255,0.85); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(40,30,90,0.06);"><svg width="22" height="22" viewBox="0 0 24 24" fill="#E11D2E"><path d="M8 5v14l11-7z"></path></svg></div>
+          <div style="flex: 1; min-width: 0;">
+            <div style="font-size: 15px; color: #1A1733; font-weight: 700; line-height: 1.3; margin-bottom: 3px;">دليلك المبسط داخل ماليزيا</div>
+            <div style="font-size: 13px; color: #5B5872; font-weight: 500; line-height: 1.4;">كل فيديوهات قناة تلبو شو مرتبة حسب الموضوع</div>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1A1733" stroke-width="2.5" style="flex-shrink:0"><polyline points="15,18 9,12 15,6"></polyline></svg>
+        </div>
+      </div>
+
+      <!-- ── ليه تلبوشو ── -->
+      <div style="background: #0B1B3A; margin-top: 44px; padding: 44px 0 48px; width: 100%;">
+      <div style="max-width: 680px; margin: 0 auto; padding: 0 20px; width: 100%;">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+          <div style="width: 4px; height: 20px; background: #0069CA; border-radius: 2px; flex-shrink: 0;"></div>
+          <h2 style="font-size: 19px; font-weight: 800; color: #fff; margin: 0;">ليه تلبوشو</h2>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px;">
+          <div style="display: flex; gap: 12px; align-items: flex-start; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 16px 18px;">
+            <div style="font-size: 20px; line-height: 1; flex-shrink: 0;">📍</div>
+            <div>
+              <div style="font-size: 13.5px; font-weight: 800; color: #fff; margin-bottom: 4px;">فريق موجود في ماليزيا</div>
+              <div style="font-size: 12.5px; color: #B9C3DB; line-height: 1.7;">معلومة من على الأرض، مش من على الإنترنت.</div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 12px; align-items: flex-start; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 16px 18px;">
+            <div style="font-size: 20px; line-height: 1; flex-shrink: 0;">🧾</div>
+            <div>
+              <div style="font-size: 13.5px; font-weight: 800; color: #fff; margin-bottom: 4px;">بدون وسيط ولا رسوم خفية</div>
+              <div style="font-size: 12.5px; color: #B9C3DB; line-height: 1.7;">تعرف تكلفتك قبل ما تبدأ، والأسعار مكتوبة قدامك.</div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 12px; align-items: flex-start; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 16px 18px;">
+            <div style="font-size: 20px; line-height: 1; flex-shrink: 0;">🕌</div>
+            <div>
+              <div style="font-size: 13.5px; font-weight: 800; color: #fff; margin-bottom: 4px;">مصمّم للعائلة العربية المسلمة</div>
+              <div style="font-size: 12.5px; color: #B9C3DB; line-height: 1.7;">برامج ومخيمات وسكن تراعي طبيعة العائلة العربية.</div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 12px; align-items: flex-start; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 16px 18px;">
+            <div style="font-size: 20px; line-height: 1; flex-shrink: 0;">💬</div>
+            <div>
+              <div style="font-size: 13.5px; font-weight: 800; color: #fff; margin-bottom: 4px;">تواصل مباشر بدون مكاتب</div>
+              <div style="font-size: 12.5px; color: #B9C3DB; line-height: 1.7;">واتساب مباشر مع الفريق، ورد على استفسارك بسرعة.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <!-- ── آراء عملائنا ── -->
+      <div style="max-width: 680px; margin: 0 auto; padding: 44px 20px 0; width: 100%;">
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 18px;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="width: 4px; height: 20px; background: #0069CA; border-radius: 2px; flex-shrink: 0;"></div>
+            <h2 style="font-size: 19px; font-weight: 800; color: #1A1733; margin: 0;">آراء عملائنا ومتابعينا</h2>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 8px; flex-shrink: 0;">
+            <button onClick="{{ prevTesti }}" aria-label="السابق" style="width: 34px; height: 34px; border-radius: 50%; border: 1.5px solid #E8E8E8; background: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #64748B; padding: 0;" style-hover="border-color: #0069CA; color: #0069CA;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="9,18 15,12 9,6"></polyline></svg>
+            </button>
+            <button onClick="{{ nextTesti }}" aria-label="التالي" style="width: 34px; height: 34px; border-radius: 50%; border: 1.5px solid #E8E8E8; background: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #64748B; padding: 0;" style-hover="border-color: #0069CA; color: #0069CA;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15,18 9,12 15,6"></polyline></svg>
+            </button>
+          </div>
+        </div>
+
+        <div style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #FFF9E6, #FFF3CC); border: 1.5px solid #F5C518; border-radius: 10px; padding: 8px 18px; margin-bottom: 16px;">
+          <span style="font-size: 14px;">⭐</span>
+          <span style="color: #2C1505; font-size: 12px; font-weight: 700;">خدمنا أكثر من +1000 عائلة وطالب عربي في ماليزيا</span>
+        </div>
+
+        <div style="overflow: hidden; border-radius: 20px;">
+          <div style="display: flex; flex-direction: row; transition: transform 380ms cubic-bezier(0.4,0,0.2,1); transform: {{ testiTransform }};">
+            <sc-for list="{{ testimonials }}" as="t" hint-placeholder-count="3">
+              <div style="flex: 0 0 100%; min-width: 0; padding-left: 2px;">
+                <div style="background: #fff; border: 1.5px solid #EDE9FE; border-radius: 20px; padding: 24px; box-shadow: 0 8px 28px rgba(0,105,202,0.07); min-height: 200px; display: flex; flex-direction: column; gap: 14px;">
+                  <div style="font-size: 13px; color: #3B8FE0; letter-spacing: 2px;">{{ t.stars }}</div>
+                  <p style="font-size: 14.5px; color: #334155; line-height: 1.95; margin: 0; flex: 1;">{{ t.quote }}</p>
+                  <div style="display: flex; align-items: center; gap: 12px; border-top: 1px solid #F1F5F9; padding-top: 14px;">
+                    <div style="width: 40px; height: 40px; border-radius: 50%; background: #F5F3FF; border: 1.5px solid #EDE9FE; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 800; color: #0069CA; flex-shrink: 0;">{{ t.initial }}</div>
+                    <div style="min-width: 0;">
+                      <div style="font-size: 13.5px; font-weight: 800; color: #1A1733;">{{ t.name }}</div>
+                      <div style="font-size: 12px; color: #94A3B8;">{{ t.meta }}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; justify-content: center; gap: 7px; margin-top: 14px;">
+          <sc-for list="{{ testiDots }}" as="d" hint-placeholder-count="3">
+            <div onClick="{{ goTesti }}" data-testi-index="{{ d.i }}" style="width: {{ d.w }}; height: 7px; border-radius: 10px; background: {{ d.bg }}; cursor: pointer; transition: all 240ms;"></div>
+          </sc-for>
+        </div>
+      </div>
+
+      <!-- ── أسئلة شائعة ── -->
+      <div style="max-width: 680px; margin: 0 auto; padding: 44px 20px 0; width: 100%;">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 18px;">
+          <div style="width: 4px; height: 20px; background: #0069CA; border-radius: 2px; flex-shrink: 0;"></div>
+          <h2 style="font-size: 19px; font-weight: 800; color: #1A1733; margin: 0;">أسئلة شائعة</h2>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="4">
+            <div onClick="{{ toggleFaq }}" data-faq-id="{{ q.id }}" style="border: 1.5px solid {{ q.border }}; background: {{ q.bg }}; border-radius: 14px; padding: 15px 18px; cursor: pointer; transition: all 160ms;">
+              <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+                <span style="font-size: 13.5px; font-weight: 700; color: #1A1733; line-height: 1.6;">{{ q.q }}</span>
+                <span style="font-size: 15px; color: #0069CA; font-weight: 800; flex-shrink: 0;">{{ q.sign }}</span>
+              </div>
+              <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
+                <div style="font-size: 12.5px; color: #64748B; line-height: 1.85; margin-top: 10px;">{{ q.a }}</div>
+              </sc-if>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <!-- ── الرعاة ── -->
+      <div style="max-width: 680px; margin: 0 auto; padding: 48px 20px 0; width: 100%;">
+        <div style="text-align: center; margin-bottom: 20px;">
+          <h2 style="font-size: 17px; font-weight: 800; color: #1A1733; margin: 0 0 6px;">الرعاة على قناة تلبوشو</h2>
+          <p style="font-size: 12.5px; color: #94A3B8; margin: 0;">شركاء نثق بهم ونعمل معهم في ماليزيا</p>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px;">
+          <div style="background: #fff; border: 1px solid #ECEAF4; border-radius: 16px; padding: 18px 16px; display: flex; flex-direction: column; align-items: center; gap: 12px; box-shadow: 0 10px 30px rgba(40,30,90,0.05);">
+            <div style="height: 62px; display: flex; align-items: center; justify-content: center; width: 100%;">
+              <img src="assets/sponsor-berkat.webp" alt="البركة للتموينات الغذائية" style="max-height: 62px; max-width: 100%; object-fit: contain;"/>
+            </div>
+            <div style="font-size: 12.5px; font-weight: 700; color: #475569; text-align: center;">البركة للتموينات الغذائية</div>
+          </div>
+          <div style="background: #fff; border: 1px solid #ECEAF4; border-radius: 16px; padding: 18px 16px; display: flex; flex-direction: column; align-items: center; gap: 12px; box-shadow: 0 10px 30px rgba(40,30,90,0.05);">
+            <div style="height: 62px; display: flex; align-items: center; justify-content: center; width: 100%;">
+              <img src="assets/sponsor-pioneer.webp" alt="Pioneer Education Services" style="max-height: 62px; max-width: 100%; object-fit: contain;"/>
+            </div>
+            <div style="font-size: 12.5px; font-weight: 700; color: #475569; text-align: center;">Pioneer Education Services</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── فوتر ── -->
+      <div style="margin-top: 52px; background: #0B1220; padding: 34px 20px 28px;">
+        <div style="max-width: 680px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 18px; text-align: center;">
+          <img src="assets/logo.webp" alt="Telposhow" style="height: 52px; width: auto; border-radius: 10px;"/>
+          <p style="font-size: 13px; color: #94A3B8; margin: 0; line-height: 1.8; max-width: 420px;">تلبوشو — دليلك العربي في ماليزيا: إقامة وانتقال، دراسة، واستثمار.</p>
+          
+          <div style="font-size: 12px; color: #475569; border-top: 1px solid #1E293B; padding-top: 16px; width: 100%;">© تلبوشو · كوالالمبور، ماليزيا</div>
+        </div>
+      </div>
+
+    </div>
+  </sc-if>
+
+  <!-- ═══════ SCREEN: GUIDE ═══════ -->
+  <sc-if value="{{ showGuide }}" hint-placeholder-val="{{ false }}">
+    <div style="min-height: 100vh; animation: fadeUp 220ms ease;">
+      <div style="border-bottom: 1px solid #F2F2F2; position: sticky; top: 0; background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); z-index: 10;">
+        <div style="max-width: 680px; margin: 0 auto; padding: 0 24px; height: 56px; display: flex; align-items: center; justify-content: space-between;">
+          <button onClick="{{ closeGuide }}" style="display: inline-flex; align-items: center; gap: 8px; background: #1F2937; border: none; border-radius: 10px; padding: 9px 18px 9px 14px; cursor: pointer; color: #fff; font-family: 'Cairo', sans-serif; font-size: 15px; font-weight: 800; box-shadow: 0 3px 10px rgba(0,0,0,0.15);" style-hover="opacity: 0.9;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="9,18 15,12 9,6"></polyline></svg>
+            الرئيسية
+          </button>
+          <img src="assets/logo.webp" alt="Telposhow" style="mix-blend-mode: multiply; height: 32px; width: auto; opacity: 0.85;"/>
+        </div>
+      </div>
+      <div style="max-width: 680px; margin: 0 auto; padding: 36px 24px 80px;">
+        <div style="display: inline-flex; align-items: center; gap: 6px; background: #FFF1F2; border-radius: 10px; padding: 5px 14px; margin-bottom: 14px;">
+          <span style="color: #E11D48; font-size: 12px; font-weight: 700;">قناة تلبو شو · Telpo Show</span>
+        </div>
+        <h2 style="font-size: 24px; font-weight: 800; color: #1A1733; margin: 0 0 10px; line-height: 1.4;">دليلك الشامل إلى ماليزيا</h2>
+        <p style="font-size: 14px; color: #64748B; line-height: 1.9; margin: 0 0 32px; text-wrap: pretty;">كل ما تحتاج معرفته عن ماليزيا — السياحة، الدراسة، المعيشة، والعمل — في قوائم تشغيل مصوّرة ومقسّمة حسب الموضوع.</p>
+        <div style="display: flex; flex-direction: column; gap: 30px;">
+          <sc-for list="{{ guideSections }}" as="sec" hint-placeholder-count="4">
+            <div>
+              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                <span style="font-size: 20px; line-height: 1;">{{ sec.icon }}</span>
+                <h3 style="font-size: 16px; font-weight: 800; color: #1A1733; margin: 0;">{{ sec.title }}</h3>
+              </div>
+              <div style="display: flex; flex-direction: column; border: 1px solid #ECEAF4; border-radius: 16px; overflow: hidden; background: #fff;">
+                <sc-for list="{{ sec.items }}" as="it" hint-placeholder-count="3">
+                  <a href="{{ it.url }}" target="_blank" rel="noopener" style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; text-decoration: none; border-top: 1px solid #F1F5F9; color: #1A1733;" style-hover="background: #F8FAFC;">
+                    <span style="font-size: 18px; line-height: 1; flex-shrink: 0;">{{ it.icon }}</span>
+                    <span style="flex: 1; min-width: 0; font-size: 14px; font-weight: 700; line-height: 1.5;">{{ it.title }}</span>
+                    <span style="display: inline-flex; align-items: center; gap: 5px; flex-shrink: 0; background: #FF0033; color: #fff; font-size: 12px; font-weight: 700; padding: 6px 12px; border-radius: 10px;"><svg width="10" height="10" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"></path></svg>شاهد</span>
+                  </a>
+                </sc-for>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="margin-top: 36px; background: #F8FAFC; border-radius: 16px; padding: 18px 20px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px;">
+          <span style="font-size: 13.5px; color: #475569; font-weight: 600; line-height: 1.7; flex: 1 1 240px;">اشترك في القناة وفعّل الجرس ليصلك كل جديد عن ماليزيا.</span>
+          <a href="https://www.youtube.com/@TelpoShow?sub_confirmation=1" target="_blank" rel="noopener" style="background: #FF0033; color: #fff; text-decoration: none; font-size: 14px; font-weight: 800; padding: 11px 22px; border-radius: 10px;">اشترك في القناة</a>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ═══════ SCREEN 2: FILTERED SERVICES ═══════ -->
+  <sc-if value="{{ showFiltered }}" hint-placeholder-val="{{ false }}">
+    <div style="min-height: 100vh; animation: fadeUp 220ms ease;">
+
+      <div style="border-bottom: 1px solid #F2F2F2; position: sticky; top: 0; background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); z-index: 10;">
+        <div style="max-width: 680px; margin: 0 auto; padding: 0 24px; height: 56px; display: flex; align-items: center; justify-content: space-between;">
+          <button onClick="{{ goBack }}" style="display: inline-flex; align-items: center; gap: 8px; background: {{ segmentColor }}; border: none; border-radius: 10px; padding: 9px 18px 9px 14px; cursor: pointer; color: #fff; font-family: 'Cairo', sans-serif; font-size: 15px; font-weight: 800; box-shadow: 0 3px 10px rgba(0,0,0,0.15);" style-hover="opacity: 0.9;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="9,18 15,12 9,6"></polyline></svg>
+            الرئيسية
+          </button>
+          <img src="assets/logo.webp" alt="Telposhow" style="mix-blend-mode: multiply; height: 32px; width: auto; opacity: 0.85;"/>
+        </div>
+      </div>
+
+      <div style="max-width: 680px; margin: 0 auto; padding: 36px 24px 28px;">
+        <div style="display: inline-flex; align-items: center; background: {{ segmentBadgeBg }}; border-radius: 10px; padding: 5px 16px; margin-bottom: 14px;">
+          <span style="color: {{ segmentColor }}; font-size: 12px; font-weight: 700; white-space: nowrap;">{{ segmentEmoji }} {{ segmentTitle }}</span>
+        </div>
+        <h2 style="font-size: 22px; font-weight: 800; color: #1A1733; margin: 0 0 6px;">اختر الخدمة المناسبة لك</h2>
+        <p style="color: #AAA; font-size: 13px; margin: 0;">{{ segmentSub }}</p>
+        <div style="margin-top: 22px;">
+          <div style="display: flex; align-items: flex-start; max-width: 500px;">
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; width: 110px; flex-shrink: 0; text-align: center;"><div style="width: 28px; height: 28px; border-radius: 50%; background: {{ segmentColor }}; color: #fff; font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center;">١</div><span style="font-size: 12.5px; font-weight: 800; color: #1A1733; line-height: 1.5;">اختر احتياجك</span></div>
+            <div style="flex: 1; height: 2px; background: {{ segmentColor }}; opacity: 0.35; margin-top: 13px; min-width: 16px;"></div>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; width: 110px; flex-shrink: 0; text-align: center;"><div style="width: 28px; height: 28px; border-radius: 50%; background: {{ segmentColor }}; color: #fff; font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center;">٢</div><span style="font-size: 12.5px; font-weight: 800; color: #1A1733; line-height: 1.5;">احجز استشارتك</span></div>
+            <div style="flex: 1; height: 2px; background: {{ segmentColor }}; opacity: 0.35; margin-top: 13px; min-width: 16px;"></div>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; width: 110px; flex-shrink: 0; text-align: center;"><div style="width: 28px; height: 28px; border-radius: 50%; background: {{ segmentColor }}; color: #fff; font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center;">٣</div><span style="font-size: 12.5px; font-weight: 800; color: #1A1733; line-height: 1.5;">ننفّذ معك خطوة بخطوة</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sg" style="max-width: 680px; margin: 0 auto; padding: 0 24px 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+        <sc-for list="{{ filteredCards }}" as="item" hint-placeholder-count="3">
+          <div onClick="{{ handleCardClick }}" data-card-id="{{ item.id }}" style="background: #fff; border-radius: 16px; padding: 22px 18px; box-shadow: 0 12px 36px rgba(40,30,90,0.06); border: 1px solid #ECEAF4; cursor: pointer; display: flex; flex-direction: column; gap: 14px; transition: box-shadow 180ms, transform 140ms;" style-hover="box-shadow: 0 12px 40px rgba(0,0,0,0.1); transform: translateY(-2px);">
+            <div style="width: 50px; height: 50px; background: {{ item.iconBg }}; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0;">{{ item.icon }}</div>
+            <div style="flex: 1;">
+              <div style="font-size: 14px; font-weight: 700; color: #1A1733; line-height: 1.4; margin-bottom: 5px;">{{ item.title }}</div>
+              <div style="font-size: 12px; color: #555;">{{ item.sub }}</div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 5px;">
+              <span style="font-size: 12px; font-weight: 700; color: {{ item.accentColor }};">{{ item.cta }}</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="{{ item.accentColor }}" stroke-width="2.5"><polyline points="15,18 9,12 15,6"></polyline></svg>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+
+    </div>
+  </sc-if>
+
+  <!-- ═══════ SCREEN 3: SERVICE DETAIL ═══════ -->
+  <sc-if value="{{ showDetail }}" hint-placeholder-val="{{ false }}">
+    <div style="min-height: 100vh; animation: fadeUp 240ms ease;">
+
+      <div style="border-bottom: 1px solid #F2F2F2; position: sticky; top: 0; background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); z-index: 10;">
+        <div style="max-width: 680px; margin: 0 auto; padding: 0 24px; height: 56px; display: flex; align-items: center; justify-content: space-between;">
+          <button onClick="{{ goBack }}" style="display: inline-flex; align-items: center; gap: 8px; background: {{ segmentColor }}; border: none; border-radius: 10px; padding: 9px 18px 9px 14px; cursor: pointer; color: #fff; font-family: 'Cairo', sans-serif; font-size: 15px; font-weight: 800; box-shadow: 0 3px 10px rgba(0,0,0,0.15);" style-hover="opacity: 0.9;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="9,18 15,12 9,6"></polyline></svg>
+            العودة
+          </button>
+          <img src="assets/logo.webp" alt="Telposhow" style="mix-blend-mode: multiply; height: 32px; width: auto; opacity: 0.85;"/>
+        </div>
+      </div>
+
+      <div style="max-width: 680px; margin: 0 auto; padding: 48px 24px 80px;">
+
+        <!-- ── Cat A (1–4) ── -->
+        <sc-if value="{{ isCatA }}" hint-placeholder-val="{{ false }}">
+          <div style="display: inline-flex; align-items: center; background: #E8F1FC; border-radius: 10px; padding: 4px 14px; margin-bottom: 24px;">
+            <span style="color: #0069CA; font-size: 11px; font-weight: 700; letter-spacing: 0.06em;">استشارات تلبوشو · استشارة مدفوعة</span>
+          </div>
+          <div style="font-size: 56px; margin-bottom: 16px; line-height: 1;">{{ modalIcon }}</div>
+          <h2 style="font-size: 26px; font-weight: 800; color: #1A1733; margin: 0 0 8px; line-height: 1.3;">{{ modalTitle }}</h2>
+          <p style="font-size: 15px; color: #777; line-height: 1.85; margin: 0 0 32px;">{{ modalDesc }}</p>
+
+          <!-- المشاريع المتاحة للفرانشايز (كارت 9) -->
+          <sc-if value="{{ isFranchise }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-bottom: 32px;">
+              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                <div style="width: 4px; height: 18px; background: #0069CA; border-radius: 2px; flex-shrink: 0;"></div>
+                <h3 style="font-size: 16px; font-weight: 800; color: #1A1733; margin: 0;">المشاريع المتاحة حالياً</h3>
+              </div>
+              <p style="font-size: 13px; color: #94A3B8; margin: 0 0 16px; line-height: 1.8;">فرص امتياز مختارة نتابعها مباشرة في ماليزيا. اطلب ملف المشروع لمعرفة رسوم الامتياز، التكلفة التقديرية، والعائد المتوقع.</p>
+
+              <div style="display: flex; flex-direction: column; gap: 12px;">
+                <sc-for list="{{ franchises }}" as="fr" hint-placeholder-count="1">
+                  <div style="background: #fff; border: 1.5px solid #C4DAF3; border-radius: 18px; padding: 18px; box-shadow: 0 6px 22px rgba(0,105,202,0.07);">
+                    <div style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 14px;">
+                      <div style="width: 52px; height: 52px; border-radius: 14px; background: #F1F6FD; border: 1.5px solid #C4DAF3; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0;">{{ fr.icon }}</div>
+                      <div style="flex: 1; min-width: 0;">
+                        <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 4px;">
+                          <span style="font-size: 16px; font-weight: 800; color: #1A1733;">{{ fr.name }}</span>
+                          <span style="background: #F1F6FD; border: 1px solid #C4DAF3; color: #0B4F99; font-size: 10.5px; font-weight: 700; padding: 2px 9px; border-radius: 10px; white-space: nowrap; flex-shrink: 0;">{{ fr.status }}</span>
+                        </div>
+                        <div style="font-size: 12.5px; color: #64748B; line-height: 1.75;">{{ fr.desc }}</div>
+                      </div>
+                    </div>
+                    <a href="{{ fr.wa }}" target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 9px; background: #0069CA; color: #fff; padding: 12px 22px; border-radius: 10px; font-size: 14px; font-weight: 700; text-decoration: none;" style-hover="background: #0B4F99;">اطلب ملف المشروع</a>
+                  </div>
+                </sc-for>
+              </div>
+
+              <div style="margin-top: 14px; background: #F8FAFC; border: 1px dashed #CBD5E1; border-radius: 14px; padding: 14px 16px; font-size: 12.5px; color: #64748B; line-height: 1.8;">مشاريع جديدة بتضاف باستمرار. لو عندك قطاع معيّن في بالك، احجز استشارة وهنرشحلك الفرص المناسبة.</div>
+            </div>
+          </sc-if>
+
+          <!-- الإقامة MM2H (كارت 1) -->
+          <sc-if value="{{ isResidency }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-bottom: 32px; display: flex; flex-direction: column; gap: 22px;">
+              <div>
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                  <div style="width: 4px; height: 18px; background: #0069CA; border-radius: 2px; flex-shrink: 0;"></div>
+                  <h3 style="font-size: 16px; font-weight: 800; color: #1A1733; margin: 0;">إقامتك الذهبية في ماليزيا بأسلوب سلس وأمان مطلق</h3>
+                </div>
+                <p style="font-size: 13px; color: #64748B; margin: 0; line-height: 1.85;">احصل على إقامة طويلة الأمد لك ولعائلتك توفر لك الاستقرار المالي والشخصي في واحدة من أكثر دول العالم أماناً وتطوراً. نرافقك خطوة بخطوة بدءاً من التخطيط المالي وحتى تسلّم ملصق الإقامة على جواز سفرك.</p>
+              </div>
+
+              <div>
+                <div style="font-size: 14px; font-weight: 800; color: #1A1733; margin-bottom: 12px;">المزايا الرئيسية</div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px;">
+                  <div style="background: #fff; border: 1px solid #ECEAF4; border-radius: 16px; padding: 16px 18px;">
+                    <div style="font-size: 13.5px; font-weight: 800; color: #0069CA; margin-bottom: 6px;">استقرار طويل الأمد</div>
+                    <div style="font-size: 12.5px; color: #64748B; line-height: 1.8;">إقامة تمتد من 5 إلى 20 سنة (حسب الفئة المختارة) قابلة للتجديد.</div>
+                  </div>
+                  <div style="background: #fff; border: 1px solid #ECEAF4; border-radius: 16px; padding: 16px 18px;">
+                    <div style="font-size: 13.5px; font-weight: 800; color: #0069CA; margin-bottom: 6px;">حرية مالية ومميزات ضريبية</div>
+                    <div style="font-size: 12.5px; color: #64748B; line-height: 1.8;">عدم وجود ضريبة على الأموال والدخل القادم من الخارج أو الأرباح الناتجة عن الودائع البنكية المحلية.</div>
+                  </div>
+                  <div style="background: #fff; border: 1px solid #ECEAF4; border-radius: 16px; padding: 16px 18px;">
+                    <div style="font-size: 13.5px; font-weight: 800; color: #0069CA; margin-bottom: 6px;">خدمة متكاملة</div>
+                    <div style="font-size: 12.5px; color: #64748B; line-height: 1.8;">إدارة شاملة للملف، فتح الحسابات البنكية المحلية، والتنسيق الطبي مع ضمان الشفافية القانونية التامة.</div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div style="font-size: 14px; font-weight: 800; color: #1A1733; margin-bottom: 12px;">الخيارات المتاحة للإقامة</div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px;">
+                  <div style="background: #F1F6FD; border: 1.5px solid #C4DAF3; border-radius: 16px; padding: 16px 18px;">
+                    <div style="font-size: 14.5px; font-weight: 800; color: #0B4F99; margin-bottom: 12px;">الفيدرالي (MM2H)</div>
+                    <div style="display: flex; flex-direction: column; gap: 9px; font-size: 12.5px; line-height: 1.7;">
+                      <div style="display: flex; gap: 10px;"><span style="color: #64748B; min-width: 92px; flex-shrink: 0;">الفئات</span><span style="color: #1A1733; font-weight: 600;">الفضية، الذهبية، البلاتينية، وSEZ</span></div>
+                      <div style="display: flex; gap: 10px;"><span style="color: #64748B; min-width: 92px; flex-shrink: 0;">العمر المطلوب</span><span style="color: #1A1733; font-weight: 600;">من 25 عاماً فما فوق (و21 لـ SEZ)</span></div>
+                      <div style="display: flex; gap: 10px;"><span style="color: #64748B; min-width: 92px; flex-shrink: 0;">الشرط المالي</span><span style="color: #1A1733; font-weight: 600;">ودائع تبدأ من 32,000$ حتى 1,000,000$ حسب الفئة</span></div>
+                      <div style="display: flex; gap: 10px;"><span style="color: #64748B; min-width: 92px; flex-shrink: 0;">الإقامة السنوية</span><span style="color: #1A1733; font-weight: 600;">90 يوماً (تُعفى الفئات من 50 عاماً فما فوق)</span></div>
+                    </div>
+                  </div>
+                  <div style="background: #F1F6FD; border: 1.5px solid #C4DAF3; border-radius: 16px; padding: 16px 18px;">
+                    <div style="font-size: 14.5px; font-weight: 800; color: #0B4F99; margin-bottom: 12px;">ولاية ساراواك (S-MM2H)</div>
+                    <div style="display: flex; flex-direction: column; gap: 9px; font-size: 12.5px; line-height: 1.7;">
+                      <div style="display: flex; gap: 10px;"><span style="color: #64748B; min-width: 92px; flex-shrink: 0;">الفئات</span><span style="color: #1A1733; font-weight: 600;">فئة موحدة</span></div>
+                      <div style="display: flex; gap: 10px;"><span style="color: #64748B; min-width: 92px; flex-shrink: 0;">العمر المطلوب</span><span style="color: #1A1733; font-weight: 600;">من 30 عاماً فما فوق</span></div>
+                      <div style="display: flex; gap: 10px;"><span style="color: #64748B; min-width: 92px; flex-shrink: 0;">الشرط المالي</span><span style="color: #1A1733; font-weight: 600;">500,000 رينغيت + إثبات دخل أو مدخرات</span></div>
+                      <div style="display: flex; gap: 10px;"><span style="color: #64748B; min-width: 92px; flex-shrink: 0;">الإقامة السنوية</span><span style="color: #1A1733; font-weight: 600;">30 يوماً تراكمية داخل الولاية</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div style="background: #F7FAFE; border: 1.5px solid #D6E6F8; border-radius: 16px; padding: 18px;">
+                <div style="font-size: 14px; font-weight: 800; color: #1A1733; margin-bottom: 14px;">رحلتك معنا نحو الإقامة</div>
+                <div style="display: flex; flex-direction: column; gap: 14px;">
+                  <div style="display: flex; gap: 12px; align-items: flex-start;"><div style="width: 26px; height: 26px; border-radius: 50%; background: #0069CA; color: #fff; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">١</div><div><div style="font-size: 13.5px; font-weight: 800; color: #1A1733;">الاستشارة الأولية</div><div style="font-size: 12.5px; color: #64748B; line-height: 1.75;">تقييم وضعك واختيار الفئة الأنسب لك ولعائلتك.</div></div></div>
+                  <div style="display: flex; gap: 12px; align-items: flex-start;"><div style="width: 26px; height: 26px; border-radius: 50%; background: #0069CA; color: #fff; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">٢</div><div><div style="font-size: 13.5px; font-weight: 800; color: #1A1733;">تجهيز وتصديق المستندات</div><div style="font-size: 12.5px; color: #64748B; line-height: 1.75;">إدارة كاملة لإعداد الوثائق الرسمية وشهادات خلو السوابق.</div></div></div>
+                  <div style="display: flex; gap: 12px; align-items: flex-start;"><div style="width: 26px; height: 26px; border-radius: 50%; background: #0069CA; color: #fff; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">٣</div><div><div style="font-size: 13.5px; font-weight: 800; color: #1A1733;">التقديم والحصول على الموافقة</div><div style="font-size: 12.5px; color: #64748B; line-height: 1.75;">التقديم الرسمي لدى الجهات المختصة ومتابعة الملف حتى صدور الموافقة.</div></div></div>
+                  <div style="display: flex; gap: 12px; align-items: flex-start;"><div style="width: 26px; height: 26px; border-radius: 50%; background: #0069CA; color: #fff; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">٤</div><div><div style="font-size: 13.5px; font-weight: 800; color: #1A1733;">الوصول وتثبيت الإقامة</div><div style="font-size: 12.5px; color: #64748B; line-height: 1.75;">التنسيق لفتح الحساب البنكي، الفحص الطبي، وتثبيت التأشيرة على الجوازات.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </sc-if>
+
+          <!-- الانتقال والسكن (كارت 2) -->
+          <sc-if value="{{ isRelocation }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-bottom: 32px;">
+              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                <div style="width: 4px; height: 18px; background: #0069CA; border-radius: 2px; flex-shrink: 0;"></div>
+                <h3 style="font-size: 16px; font-weight: 800; color: #1A1733; margin: 0;">استأجر عقارك المفضل دون تعقيدات وبلا وديعة ضخمة</h3>
+              </div>
+              <p style="font-size: 13px; color: #64748B; margin: 0 0 16px; line-height: 1.85;">نوفر للمغتربين، الطلاب، والعائلات الحديثة الإقامة خيارات سكنية مفروشة بالكامل في أرقى مناطق العاصمة والمدن الرئيسية.</p>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px;">
+                <div style="background: #fff; border: 1px solid #ECEAF4; border-radius: 16px; padding: 16px 18px;">
+                  <div style="font-size: 13.5px; font-weight: 800; color: #0069CA; margin-bottom: 6px;">بدون وديعة مالية ضخمة (Zero Deposit)</div>
+                  <div style="font-size: 12.5px; color: #64748B; line-height: 1.8;">حلول استئجار مرنة تخفف عنك الأعباء المالية المبدئية.</div>
+                </div>
+                <div style="background: #fff; border: 1px solid #ECEAF4; border-radius: 16px; padding: 16px 18px;">
+                  <div style="font-size: 13.5px; font-weight: 800; color: #0069CA; margin-bottom: 6px;">عقود موثوقة إلكترونياً</div>
+                  <div style="font-size: 12.5px; color: #64748B; line-height: 1.8;">شفافية كاملة في التعاقد، وتنسيق مباشر مع الملاك للانتقال السريع والآمن.</div>
+                </div>
+              </div>
+            </div>
+          </sc-if>
+
+          <!-- ملخص المدارس في ماليزيا (كارت 4) -->
+          <sc-if value="{{ isSchools }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-bottom: 32px;">
+              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                <div style="width: 4px; height: 18px; background: #0069CA; border-radius: 2px; flex-shrink: 0;"></div>
+                <h3 style="font-size: 16px; font-weight: 800; color: #1A1733; margin: 0;">أنواع المدارس في ماليزيا</h3>
+              </div>
+              
+
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-bottom: 18px;">
+                <div style="background: #fff; border: 1px solid #ECEAF4; border-radius: 16px; padding: 16px 18px; box-shadow: 0 10px 30px rgba(40,30,90,0.05);">
+                  <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                    <span style="font-size: 18px; line-height: 1;">🌍</span>
+                    <span style="font-size: 13.5px; font-weight: 800; color: #1A1733;">المدارس الدولية</span>
+                  </div>
+                  <div style="font-size: 12.5px; color: #64748B; line-height: 1.8;">مناهج بريطانية أو أمريكية أو IB، والدراسة بالإنجليزي. الأعلى في الرسوم، والأنسب لو الخطة إكمال الجامعة بالخارج.</div>
+                </div>
+                <div style="background: #fff; border: 1px solid #ECEAF4; border-radius: 16px; padding: 16px 18px; box-shadow: 0 10px 30px rgba(40,30,90,0.05);">
+                  <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                    <span style="font-size: 18px; line-height: 1;">🕌</span>
+                    <span style="font-size: 13.5px; font-weight: 800; color: #1A1733;">المدارس العربية والإسلامية</span>
+                  </div>
+                  <div style="font-size: 12.5px; color: #64748B; line-height: 1.8;">منهج عربي معتمد مع تحفيظ وعلوم شرعية. الأنسب للعائلات اللي عايزة تحافظ على اللغة العربية وإمكانية العودة للبلد.</div>
+                </div>
+                <div style="background: #fff; border: 1px solid #ECEAF4; border-radius: 16px; padding: 16px 18px; box-shadow: 0 10px 30px rgba(40,30,90,0.05);">
+                  <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                    <span style="font-size: 18px; line-height: 1;">🏫</span>
+                    <span style="font-size: 13.5px; font-weight: 800; color: #1A1733;">المدارس الخاصة الماليزية</span>
+                  </div>
+                  <div style="font-size: 12.5px; color: #64748B; line-height: 1.8;">منهج ماليزي وطني بلغة إنجليزية غالباً، برسوم أقل من الدولية وبيئة محلية منضبطة.</div>
+                </div>
+                <div style="background: #fff; border: 1px solid #ECEAF4; border-radius: 16px; padding: 16px 18px; box-shadow: 0 10px 30px rgba(40,30,90,0.05);">
+                  <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                    <span style="font-size: 18px; line-height: 1;">📘</span>
+                    <span style="font-size: 13.5px; font-weight: 800; color: #1A1733;">المدارس الحكومية</span>
+                  </div>
+                  <div style="font-size: 12.5px; color: #64748B; line-height: 1.8;">الأقل تكلفة، والدراسة فيها بلغة الملايو. قبول الأجانب فيها مشروط ويحتاج إجراءات خاصة.</div>
+                </div>
+              </div>
+
+              <div style="background: #fff; border: 1px solid #ECEAF4; border-radius: 16px; padding: 16px 18px; margin-bottom: 12px; box-shadow: 0 10px 30px rgba(40,30,90,0.05);">
+                <div style="font-size: 13.5px; font-weight: 800; color: #1A1733; margin-bottom: 6px;">القبولات المدرسية</div>
+                <div style="font-size: 12.5px; color: #64748B; line-height: 1.8;">نساعدك في اختيار أفضل المدارس الدولية (المنهج البريطاني، الأمريكي، البكالوريا الدولية IB) وتأمين المقاعد الدراسية وتنظيم اختبارات المستوى.</div>
+              </div>
+
+              <div style="background: #fff; border: 1px solid #ECEAF4; border-radius: 16px; padding: 16px 18px; box-shadow: 0 10px 30px rgba(40,30,90,0.05);">
+                <div style="font-size: 13px; font-weight: 800; color: #0069CA; margin-bottom: 10px;">اللي بنساعدك فيه في الاستشارة</div>
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                  <div style="display: flex; gap: 9px; align-items: flex-start;"><span style="color: #0069CA; font-weight: 800; flex-shrink: 0;">•</span><span style="font-size: 12.5px; color: #475569; line-height: 1.75;">ترشيح المدارس المناسبة لعمر ابنك ومستواه ومنطقة سكنك.</span></div>
+                  <div style="display: flex; gap: 9px; align-items: flex-start;"><span style="color: #0069CA; font-weight: 800; flex-shrink: 0;">•</span><span style="font-size: 12.5px; color: #475569; line-height: 1.75;">مقارنة الرسوم السنوية والمصاريف المخفية ومواعيد التسجيل.</span></div>
+                  <div style="display: flex; gap: 9px; align-items: flex-start;"><span style="color: #0069CA; font-weight: 800; flex-shrink: 0;">•</span><span style="font-size: 12.5px; color: #475569; line-height: 1.75;">شروط قبول الطالب الأجنبي وتأشيرة الطالب المرتبطة بالمدرسة.</span></div>
+                  <div style="display: flex; gap: 9px; align-items: flex-start;"><span style="color: #0069CA; font-weight: 800; flex-shrink: 0;">•</span><span style="font-size: 12.5px; color: #475569; line-height: 1.75;">متابعة خطوات التسجيل وتجهيز الأوراق المطلوبة.</span></div>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px;">
+                <button onClick="{{ setDuration30 }}" style="background: #0069CA; color: #fff; border: none; border-radius: 10px; padding: 11px 12px; cursor: pointer; font-family: 'Cairo', sans-serif; display: flex; flex-direction: column; align-items: center; gap: 2px; box-shadow: 0 6px 16px rgba(0,105,202,0.22); transition: background 150ms, transform 150ms;" style-hover="background: #0057A8; transform: translateY(-1px);">
+                  <span style="font-size: 14px; font-weight: 800;">احجز 30 دقيقة</span>
+                  <span style="font-size: 13px; font-weight: 700; opacity: 0.9;">{{ price30 }}</span>
+                </button>
+                <button onClick="{{ setDuration60 }}" style="background: #0069CA; color: #fff; border: none; border-radius: 10px; padding: 11px 12px; cursor: pointer; font-family: 'Cairo', sans-serif; display: flex; flex-direction: column; align-items: center; gap: 2px; box-shadow: 0 6px 16px rgba(0,105,202,0.22); transition: background 150ms, transform 150ms;" style-hover="background: #0057A8; transform: translateY(-1px);">
+                  <span style="font-size: 14px; font-weight: 800;">احجز 60 دقيقة</span>
+                  <span style="font-size: 13px; font-weight: 700; opacity: 0.9;">{{ price60 }}</span>
+                </button>
+              </div>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ showDurationSelector }}" hint-placeholder-val="{{ true }}">
+            <div style="margin-bottom: 24px;">
+              <div style="font-size: 14px; font-weight: 700; color: #1A1733; margin-bottom: 10px;">اختر مدة الاستشارة</div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <button onClick="{{ setDuration30 }}" style="background: #0069CA; color: #fff; border: none; border-radius: 10px; padding: 11px 12px; cursor: pointer; font-family: 'Cairo', sans-serif; display: flex; flex-direction: column; align-items: center; gap: 2px; box-shadow: 0 6px 16px rgba(0,105,202,0.22); transition: background 150ms, transform 150ms;" style-hover="background: #0057A8; transform: translateY(-1px);">
+                  <span style="font-size: 14px; font-weight: 800;">احجز 30 دقيقة</span>
+                  <span style="font-size: 13px; font-weight: 700; opacity: 0.9;">{{ price30 }}</span>
+                </button>
+                <button onClick="{{ setDuration60 }}" style="background: #0069CA; color: #fff; border: none; border-radius: 10px; padding: 11px 12px; cursor: pointer; font-family: 'Cairo', sans-serif; display: flex; flex-direction: column; align-items: center; gap: 2px; box-shadow: 0 6px 16px rgba(0,105,202,0.22); transition: background 150ms, transform 150ms;" style-hover="background: #0057A8; transform: translateY(-1px);">
+                  <span style="font-size: 14px; font-weight: 800;">احجز 60 دقيقة</span>
+                  <span style="font-size: 13px; font-weight: 700; opacity: 0.9;">{{ price60 }}</span>
+                </button>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ isFixedDuration }}" hint-placeholder-val="{{ false }}">
+            <div style="display: flex; align-items: center; gap: 12px; background: #E8F1FC; border-radius: 14px; padding: 14px 18px; margin-bottom: 24px;">
+              <span style="font-size: 22px;">⏱⏱</span>
+              <div>
+                <div style="font-size: 14px; font-weight: 700; color: #1A1733;">{{ fixedDurationLabel }}</div>
+                <div style="font-size: 12px; color: #888; margin-top: 2px;">جلسة واحدة شاملة لكل تفاصيل تأسيس عملك</div>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ isFixedDuration }}" hint-placeholder-val="{{ false }}">
+            <button onClick="{{ openBooking }}" style="width: 100%; background: #0069CA; color: #fff; border: none; padding: 12px 20px; border-radius: 10px; font-size: 14.5px; font-weight: 800; cursor: pointer; font-family: 'Cairo', sans-serif; margin-bottom: 16px; box-shadow: 0 8px 24px rgba(0,105,202,0.25); transition: background 150ms, transform 150ms;" style-hover="background: #0057A8; transform: translateY(-1px);">احجز موعدك الآن</button>
+          </sc-if>
+
+          <div style="text-align: center; padding: 4px 0 8px;">
+            <a href="{{ waSupport }}" target="_blank" style="color: #BBB; font-size: 13px; font-weight: 500; text-decoration: none; border-bottom: 1px dashed #DDD; padding-bottom: 1px;" style-hover="color: #888;">تواجه مشكلة في الدفع؟ تواصل مع الدعم الفني</a>
+          </div>
+        </sc-if>
+
+        <!-- ── Card 5: Uni ── -->
+        <sc-if value="{{ m5 }}" hint-placeholder-val="{{ false }}">
+          <div style="display: inline-flex; align-items: center; background: #E8F1FC; border-radius: 10px; padding: 4px 14px; margin-bottom: 24px;">
+            <span style="color: #0069CA; font-size: 11px; font-weight: 700; letter-spacing: 0.06em;">خدمات تلبوشو المتكاملة في ماليزيا</span>
+          </div>
+          <div style="font-size: 56px; margin-bottom: 16px; line-height: 1;">🎓</div>
+          <h2 style="font-size: 26px; font-weight: 800; color: #1A1733; margin: 0 0 8px;">الدراسة الجامعية</h2>
+          <p style="font-size: 15px; color: #777; line-height: 1.85; margin: 0 0 20px;">أخبرنا باحتياجك الدراسي بالتفصيل وسنتولى إيجاد أفضل خيار جامعي لك في ماليزيا — بدون وسيط وبدون رسوم خفية.</p>
+          <div style="background: #F7FAFE; border: 1.5px solid #D6E6F8; border-radius: 16px; padding: 16px 18px; margin-bottom: 28px;">
+            <div style="font-size: 13.5px; font-weight: 800; color: #0069CA; margin-bottom: 6px;">القبولات الجامعية والدراسات العليا</div>
+            <div style="font-size: 12.5px; color: #475569; line-height: 1.8;">توجيه أكاديمي متكامل لتأمين القبولات المباشرة في أفضل الجامعات الماليزية والدولية المعتمدة لبرامج البكالوريوس، الماجستير، والدكتوراه.</div>
+          </div>
+          <div style="margin-bottom: 28px;">
+            <div style="font-size: 12px; font-weight: 700; color: #0069CA; margin-bottom: 6px;">خدماتنا وعروض القيمة</div>
+            <h3 style="font-size: 19px; font-weight: 800; color: #1A1733; margin: 0 0 10px; line-height: 1.5; text-wrap: pretty;">رحلتك الدراسية في ماليزيا من القبول إلى التخرج</h3>
+            <p style="font-size: 13.5px; color: #64748B; line-height: 1.9; margin: 0 0 20px; text-wrap: pretty;">نقدم في شركتنا دعماً شاملاً ومستمراً يرافق الطالب خطوة بخطوة، لضمان تجربة دراسية دولية ناجحة وخالية من المتاعب. صُممت خدماتنا لتلبي كافة الاحتياجات عبر باقات مرنة تجمع بين الخدمات الأساسية المجانية وخدمات العناية الفائقة (Premium Care).</p>
+            <div style="background: #fff; border: 1.5px solid #D6E6F8; border-radius: 18px; padding: 18px 20px 4px;">
+              <div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px;">
+                <span style="font-size: 15.5px; font-weight: 800; color: #0069CA;">خدمات العناية الفائقة</span>
+                <span style="font-size: 12px; font-weight: 600; color: #94A3B8; direction: ltr;">Extra Care Services</span>
+              </div>
+              <p style="font-size: 12.5px; color: #64748B; line-height: 1.8; margin: 6px 0 12px;">نحرص على توفير أقصى درجات الراحة النفسية والعملية للطالب منذ اللحظة الأولى لوصوله.</p>
+              <div style="display: flex; gap: 14px; align-items: flex-start; padding: 16px 0; border-top: 1px solid #EEF2F7;">
+                <div style="width: 8px; height: 8px; border-radius: 50%; background: #0069CA; margin-top: 9px; flex-shrink: 0;"></div>
+                <div style="flex: 1; min-width: 0;">
+                  <div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; margin-bottom: 5px;">
+                    <span style="font-size: 14.5px; font-weight: 800; color: #1A1733;">الاستقبال والترحيب</span>
+                    <span style="font-size: 11.5px; font-weight: 600; color: #94A3B8; direction: ltr;">Meet & Greet</span>
+                  </div>
+                  <div style="font-size: 13px; color: #64748B; line-height: 1.85; text-wrap: pretty;">استقبال احترافي في المطار، تقديم وجبة ضيافة فور الوصول، هدية ترحيبية، شريحة اتصال ماليزية جاهزة، ونقل آمن إلى مقر السكن.</div>
+                </div>
+              </div>
+              <div style="display: flex; gap: 14px; align-items: flex-start; padding: 16px 0; border-top: 1px solid #EEF2F7;">
+                <div style="width: 8px; height: 8px; border-radius: 50%; background: #0069CA; margin-top: 9px; flex-shrink: 0;"></div>
+                <div style="flex: 1; min-width: 0;">
+                  <div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; margin-bottom: 5px;">
+                    <span style="font-size: 14.5px; font-weight: 800; color: #1A1733;">المساعدة الميدانية</span>
+                    <span style="font-size: 11.5px; font-weight: 600; color: #94A3B8; direction: ltr;">On-Site Assistance</span>
+                  </div>
+                  <div style="font-size: 13px; color: #64748B; line-height: 1.85; text-wrap: pretty;">مرافقة شخصية للطالب لإنهاء كافة إجراءات التسجيل داخل الحرم الجامعي، إجراء الفحص الطبي الإلزامي، وتنظيم جولة تعريفية شاملة (Orientation).</div>
+                </div>
+              </div>
+              <div style="display: flex; gap: 14px; align-items: flex-start; padding: 16px 0; border-top: 1px solid #EEF2F7;">
+                <div style="width: 8px; height: 8px; border-radius: 50%; background: #0069CA; margin-top: 9px; flex-shrink: 0;"></div>
+                <div style="flex: 1; min-width: 0;">
+                  <div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; margin-bottom: 5px;">
+                    <span style="font-size: 14.5px; font-weight: 800; color: #1A1733;">السكن والتنقلات</span>
+                    <span style="font-size: 11.5px; font-weight: 600; color: #94A3B8; direction: ltr;">Accommodation & Transfers</span>
+                  </div>
+                  <div style="font-size: 13px; color: #64748B; line-height: 1.85; text-wrap: pretty;">المساعدة في البحث عن السكن الأنسب (سواء داخل أو خارج الحرم الجامعي) وتأمين وسائل نقل مريحة ومكيفة.</div>
+                </div>
+              </div>
+              <div style="display: flex; gap: 14px; align-items: flex-start; padding: 16px 0; border-top: 1px solid #EEF2F7;">
+                <div style="width: 8px; height: 8px; border-radius: 50%; background: #0069CA; margin-top: 9px; flex-shrink: 0;"></div>
+                <div style="flex: 1; min-width: 0;">
+                  <div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; margin-bottom: 5px;">
+                    <span style="font-size: 14.5px; font-weight: 800; color: #1A1733;">الراحة المتميزة</span>
+                    <span style="font-size: 11.5px; font-weight: 600; color: #94A3B8; direction: ltr;">Premium Comfort</span>
+                  </div>
+                  <div style="font-size: 13px; color: #64748B; line-height: 1.85; text-wrap: pretty;">ترتيب إقامة فندقية مبدئية لمدة 3 ليالٍ لتخفيف إرهاق السفر، وتقديم الدعم الكامل في فتح حساب بنكي محلي (للطلاب فوق 18 عاماً).</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button onClick="{{ openBooking }}" style="width: 100%; background: #0069CA; color: #fff; border: none; padding: 12px 20px; border-radius: 10px; font-size: 14.5px; font-weight: 800; cursor: pointer; font-family: 'Cairo', sans-serif; box-shadow: 0 8px 24px rgba(0,105,202,0.25); transition: background 150ms, transform 150ms;" style-hover="background: #0057A8; transform: translateY(-1px);">احجز استشارة مع مختص</button>
+        </sc-if>
+
+        <!-- ── Card 6: Tourism ── -->
+        <sc-if value="{{ m6 }}" hint-placeholder-val="{{ false }}">
+          <div style="display: inline-flex; align-items: center; background: #F1F6FD; border-radius: 10px; padding: 4px 14px; margin-bottom: 24px;">
+            <span style="color: #0069CA; font-size: 11px; font-weight: 700; letter-spacing: 0.06em;">خدمات تلبوشو المتكاملة في ماليزيا</span>
+          </div>
+          <div style="font-size: 56px; margin-bottom: 16px; line-height: 1;">👨‍👩‍👧‍👦</div>
+          <h2 style="font-size: 26px; font-weight: 800; color: #1A1733; margin: 0 0 8px;">السياحة والرحلات</h2>
+          <p style="font-size: 15px; color: #777; line-height: 1.85; margin: 0 0 12px;">برامج سياحية مخصصة لماليزيا — الأسعار تقريبية وتتغير حسب عدد الأفراد والموسم. السعر النهائي يُحدد بعد التواصل معنا.</p>
+          <div style="display: inline-flex; align-items: center; gap: 7px; background: #F1F6FD; border: 1px solid #C4DAF3; border-radius: 10px; padding: 7px 14px; margin-bottom: 28px;">
+            <span style="font-size: 14px;">💡</span>
+            <span style="font-size: 12px; color: #0B4F99; font-weight: 600;">كلما زاد عدد الأفراد، كلما انخفض السعر للفرد</span>
+          </div>
+
+          <!-- Tour program cards (built in JS) -->
+          {{ c6_tourCards }}
+          {{ adminPanel }}
+
+          <!-- Booking form -->
+          <sc-if value="{{ hasTourPkg }}" hint-placeholder-val="{{ false }}">
+            <div style="background: #F7FAFE; border-radius: 20px; border: 2px solid #D6E6F8; padding: 22px; margin-bottom: 8px;">
+              {{ c6_bookingForm }}
+            </div>
+          </sc-if>
+        </sc-if>
+
+        <!-- ── Card 7: Camps ── -->
+        <sc-if value="{{ m7 }}" hint-placeholder-val="{{ false }}">
+          <div style="display: inline-flex; align-items: center; background: #E8F1FC; border-radius: 10px; padding: 4px 14px; margin-bottom: 24px;">
+            <span style="color: #0069CA; font-size: 11px; font-weight: 700; letter-spacing: 0.06em;">خدمات تلبوشو المتكاملة في ماليزيا</span>
+          </div>
+          <div style="font-size: 56px; margin-bottom: 16px; line-height: 1;">🗣️</div>
+          <h2 style="font-size: 26px; font-weight: 800; color: #1A1733; margin: 0 0 8px;">مخيمات اللغة الإنجليزية والعربية</h2>
+          <p style="font-size: 15px; color: #777; line-height: 1.85; margin: 0 0 20px;">نقدم لأبنائكم رحلات صيفية استثنائية تجمع بين التميز الأكاديمي، الانغماس اللغوي، وبناء الشخصية القيادية في بيئة آمنة ومشجعة.</p>
+          <div style="font-size: 14px; font-weight: 800; color: #1A1733; margin-bottom: 12px;">المسارات المتاحة</div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px; margin-bottom: 24px;">
+            <div style="background: #fff; border: 1.5px solid #D6E6F8; border-radius: 16px; padding: 16px 18px;">
+              <div style="font-size: 14px; font-weight: 800; color: #0069CA; margin-bottom: 4px;">المخيم اللغوي والقيادي الشامل</div>
+              <div style="font-size: 12px; color: #94A3B8; margin-bottom: 10px;">للشباب من 15 سنة فما فوق</div>
+              <div style="display: flex; flex-direction: column; gap: 7px;">
+                <div style="display: flex; gap: 9px;"><span style="color: #0069CA; font-weight: 800; flex-shrink: 0;">•</span><span style="font-size: 12.5px; color: #475569; line-height: 1.75;">انغماس كامل في اللغة الإنجليزية على مدار الساعة مع معلمين ناطقين بها.</span></div>
+                <div style="display: flex; gap: 9px;"><span style="color: #0069CA; font-weight: 800; flex-shrink: 0;">•</span><span style="font-size: 12.5px; color: #475569; line-height: 1.75;">برنامج سياحي وترفيهي مكثف يضم 12 جولة في أبرز معالم ماليزيا.</span></div>
+                <div style="display: flex; gap: 9px;"><span style="color: #0069CA; font-weight: 800; flex-shrink: 0;">•</span><span style="font-size: 12.5px; color: #475569; line-height: 1.75;">إشراف أمني وتربوي على مدار 24 ساعة، مع إقامة فاخرة، 3 وجبات يومية، ومتابعة تعليمية مجانية بعد انتهاء البرنامج.</span></div>
+              </div>
+            </div>
+            <div style="background: #fff; border: 1.5px solid #D6E6F8; border-radius: 16px; padding: 16px 18px;">
+              <div style="font-size: 14px; font-weight: 800; color: #0069CA; margin-bottom: 4px;">مخيم بناء الشخصية والقيم</div>
+              <div style="font-size: 12px; color: #94A3B8; margin-bottom: 10px;">صنّاع الغد</div>
+              <div style="display: flex; flex-direction: column; gap: 7px;">
+                <div style="display: flex; gap: 9px;"><span style="color: #0069CA; font-weight: 800; flex-shrink: 0;">•</span><span style="font-size: 12.5px; color: #475569; line-height: 1.75;">بيئة تربوية توازن بين التحصيل القرآني والإيماني وتطوير المهارات الحياتية.</span></div>
+                <div style="display: flex; gap: 9px;"><span style="color: #0069CA; font-weight: 800; flex-shrink: 0;">•</span><span style="font-size: 12.5px; color: #475569; line-height: 1.75;">5 مسارات متكاملة تشمل: القيادة، التحدث أمام الجمهور، الأنشطة الرياضية، واللقاءات الاستلهامية.</span></div>
+              </div>
+            </div>
+          </div>
+          <div style="display: inline-flex; align-items: center; gap: 7px; background: #F1F6FD; border: 1px solid #C4DAF3; border-radius: 10px; padding: 7px 14px; margin-bottom: 20px;">
+            <span style="font-size: 12px; color: #0B4F99; font-weight: 700;">سجل ابنك الآن واستفد من خصومات التسجيل المبكر</span>
+          </div>
+          <button onClick="{{ openBooking }}" style="width: 100%; background: #0069CA; color: #fff; border: none; padding: 12px 20px; border-radius: 10px; font-size: 14.5px; font-weight: 800; cursor: pointer; font-family: 'Cairo', sans-serif; box-shadow: 0 8px 24px rgba(0,105,202,0.25); transition: background 150ms, transform 150ms;" style-hover="background: #0057A8; transform: translateY(-1px);">احجز استشارة مع مختص</button>
+        </sc-if>
+
+        <!-- ── Card 10: Import ── -->
+        <sc-if value="{{ m10 }}" hint-placeholder-val="{{ false }}">
+          <div style="display: inline-flex; align-items: center; background: #F1F6FD; border-radius: 10px; padding: 4px 14px; margin-bottom: 24px;">
+            <span style="color: #0069CA; font-size: 11px; font-weight: 700; letter-spacing: 0.06em;">خدمات تلبوشو المتكاملة في ماليزيا</span>
+          </div>
+          <div style="font-size: 56px; margin-bottom: 16px; line-height: 1;">📦</div>
+          <h2 style="font-size: 26px; font-weight: 800; color: #1A1733; margin: 0 0 8px;">الاستيراد من ماليزيا والصين وتركيا</h2>
+          <p style="font-size: 15px; color: #777; line-height: 1.85; margin: 0 0 20px;">شريكك الموثوق للتوريد المباشر من ماليزيا، الصين، وتركيا. نربط أعمالك بشركات ومصانع موثوقة لضمان الحصول على أعلى جودة وأفضل أسعار توريد دون الحاجة للسفر بنفسك.</p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-bottom: 22px;">
+            <div style="background: #fff; border: 1.5px solid #C4DAF3; border-radius: 16px; padding: 16px 18px;">
+              <div style="font-size: 13.5px; font-weight: 800; color: #0069CA; margin-bottom: 6px;">تأمين الموردين والمعاينة</div>
+              <div style="font-size: 12.5px; color: #64748B; line-height: 1.8;">اختيار أفضل المصانع وتقديم عينات مطابقة للمواصفات الفنية المطلوبة.</div>
+            </div>
+            <div style="background: #fff; border: 1.5px solid #C4DAF3; border-radius: 16px; padding: 16px 18px;">
+              <div style="font-size: 13.5px; font-weight: 800; color: #0069CA; margin-bottom: 6px;">ضبط الجودة والشحن</div>
+              <div style="font-size: 12.5px; color: #64748B; line-height: 1.8;">فحص شامل للبضائع قبل الشحن وتنسيق كافة عمليات التخليص الجمركي واللوجستي.</div>
+            </div>
+          </div>
+          <button onClick="{{ openBooking }}" style="width: 100%; background: #0069CA; color: #fff; border: none; padding: 12px 20px; border-radius: 10px; font-size: 14.5px; font-weight: 800; cursor: pointer; font-family: 'Cairo', sans-serif; box-shadow: 0 8px 24px rgba(0,105,202,0.25); transition: background 150ms, transform 150ms;" style-hover="background: #0057A8; transform: translateY(-1px);">احجز استشارة 60 دقيقة · $60</button>
+        </sc-if>
+
+        <!-- ── Card 8: Marketing ── -->
+        <sc-if value="{{ m8 }}" hint-placeholder-val="{{ false }}">
+          <div style="display: inline-flex; align-items: center; background: #F1F6FD; border-radius: 10px; padding: 4px 14px; margin-bottom: 24px;">
+            <span style="color: #0069CA; font-size: 11px; font-weight: 700; letter-spacing: 0.06em;">خدمات تلبوشو المتكاملة في ماليزيا</span>
+          </div>
+          <div style="font-size: 56px; margin-bottom: 16px; line-height: 1;">⭐</div>
+          <h2 style="font-size: 26px; font-weight: 800; color: #1A1733; margin: 0 0 8px;">التسويق والرعاية الحصرية</h2>
+          <p style="font-size: 15px; color: #777; line-height: 1.85; margin: 0 0 28px;">رعاية إعلانية حصرية عبر قناة تلبوشو وقنوات التواصل الاجتماعي لأصحاب الأعمال والعلامات التجارية في ماليزيا.</p>
+          <button onClick="{{ openBooking }}" style="width: 100%; background: #0069CA; color: #fff; border: none; padding: 12px 20px; border-radius: 10px; font-size: 14.5px; font-weight: 800; cursor: pointer; font-family: 'Cairo', sans-serif; box-shadow: 0 8px 24px rgba(0,105,202,0.25); transition: background 150ms, transform 150ms;" style-hover="background: #0057A8; transform: translateY(-1px);">احجز استشارة مع مختص</button>
+        </sc-if>
+
+      </div>
+    </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const GUIDE = [
+  { icon: '🏝️', title: 'السياحة والاستكشاف', items: [
+    { icon: '📍', title: 'دليل السياحة الشامل في ماليزيا', url: 'https://www.youtube.com/playlist?list=PLO99pD6bnAEgmuP8AgNnyBIGp_YnoZHN1' },
+    { icon: '🏝️', title: 'سلسلة جزيرة لنكاوي', url: 'https://www.youtube.com/playlist?list=PLO99pD6bnAEjJwBL3FVGxZ7S9S6p6WaRe' },
+    { icon: '🛍️', title: 'التسوق والأسواق في ماليزيا', url: 'https://www.youtube.com/playlist?list=PLO99pD6bnAEhVAZTEOjZUWO30floMOor8' },
+    { icon: '🍜', title: 'الأكل والمطاعم والتجارب الغذائية', url: 'https://www.youtube.com/playlist?list=PLO99pD6bnAEjPe9MQXw73B06Ua5Q2rxUv' } ] },
+  { icon: '🏡', title: 'المعيشة والحياة والاستقرار', items: [
+    { icon: '🏢', title: 'دليل المعيشة والحياة في ماليزيا', url: 'https://www.youtube.com/playlist?list=PLO99pD6bnAEjxvfakWA0CsX3z3xYM4Nw0' },
+    { icon: '🎒', title: 'برنامج سنة أولى ماليزيا', url: 'https://www.youtube.com/playlist?list=PLO99pD6bnAEiaHDOBx2NceZaF7SpCU8f' },
+    { icon: '📑', title: 'الإقامة الشرعية والفيز', url: 'https://www.youtube.com/playlist?list=PLO99pD6bnAEizNsnnx4qeuxkcwrs6-hXi' },
+    { icon: '🏫', title: 'المدارس والتعليم للأطفال', url: 'https://www.youtube.com/playlist?list=PLO99pD6bnAEhA6qToyfiPclJ-c8Lwp9nH' },
+    { icon: '💼', title: 'فرص العمل والوظائف في ماليزيا', url: 'https://www.youtube.com/playlist?list=PLO99pD6bnAEh9pjL7bfKL_2C9rfIab4jZ' } ] },
+  { icon: '🎓', title: 'الدراسة في ماليزيا', items: [
+    { icon: '📚', title: 'دليل الدراسة الجامعية والأكاديمية كاملة', url: 'https://www.youtube.com/playlist?list=PLO99pD6bnAEjx6YfXjEqbBE_7cD3TstYu' } ] },
+  { icon: '🗣️', title: 'الثقافة، اللغة، والوثائقيات', items: [
+    { icon: '🎬', title: 'سلسلة وثائقي ماليزيا 2026', url: 'https://www.youtube.com/show/VLPLO99pD6bnAEjaT_NyyhL0Hf3HFax8RqqS?sbp=KgtGUEt2dEZZclBoa0AB' },
+    { icon: '🗣️', title: 'تعلم اللغة الماليزية (Bahasa Melayu)', url: 'https://www.youtube.com/playlist?list=PLO99pD6bnAEgiMVvo8jas9SmDALM0FvwG' } ] },
+];
+
+class Component extends DCLogic {
+  state = {
+    segment: null,
+    guideOpen: false,
+    expandedCard: null,
+    consultDuration: null,
+    bookingOpen: false,
+    c5_need: '',
+    c6_pkg: '', c6_star: '', c6_expandedPkg: null,
+    c6_hotel_sel: {}, c6_rooms: 1, c6_room_type: '',
+    c6_date_type: '', c6_date_from: '', c6_date_to: '', c6_date_confirmed: false, c6_month: '',
+    showAdmin: false,
+    preloader: 'on',
+    adminPrices: null, // loaded from localStorage in componentDidMount
+    calYear: new Date().getFullYear(), calMonth: new Date().getMonth(),
+    c6_adults: '', c6_children_count: '', c6_children_ages: '',
+    c7_package: '', c7_count: 0, c7_ages: {},
+    c8_links: '', c8_points: '', c8_sponsorship: '',
+    c8_audience: '', c8_web: '', c8_maps: '', c8_instagram: '', c8_facebook: '', c8_tiktok: '', c8_youtube: '', c8_whatsapp: '',
+    c10_product: '', c10_source: '', c10_dest: '', c10_qty: '', c10_budget: '',
+    c10_purpose: '', c10_company: '', c10_timing: '', c10_name: '', c10_notes: '', c10_consult: false,
+    openFaq: null,
+    testiIdx: 0,
+  };
+
+  testiData() {
+    return [
+      { name:'أبو عبد الرحمن', meta:'انتقل بعائلته إلى كوالالمبور', quote:'كنت تايه بين شركات كتير بتوعدني بكلام عام. الاستشارة وضّحتلي مسار الإقامة المناسب لحالتي بالظبط، ومشينا خطوة خطوة لحد ما خلصت الأوراق.' },
+      { name:'أم يوسف', meta:'أم لثلاثة أبناء · سلانجور', quote:'أصعب حاجة كانت اختيار مدرسة تناسب أولادي وتحافظ على لغتهم العربية. رشحولي مدارس محددة بميزانيتي وقارنّا بينها بالأرقام، مش كلام إنشائي.' },
+      { name:'محمد الشمري', meta:'صاحب عمل · بدأ شركته في KL', quote:'الاستشارة وفّرت عليّ شهور من التجربة والخطأ. فهمت الفرق بين أنواع الكيانات القانونية وأنهي واحد يخدم خطتي، وبدأت التسجيل بثقة.' },
+      { name:'سارة ع.', meta:'طالبة دراسات عليا', quote:'تابعت القناة سنة كاملة قبل ما أسافر، ولما وصلت لقيت كل المعلومات اللي اتقالت مطابقة للواقع. ده اللي خلاني أتعامل معاهم من أول يوم.' },
+    ];
+  }
+
+  faqData() {
+    return [
+      { id:'f1', q:'هل الاستشارة مدفوعة؟', a:'استشارات الإقامة والمدارس وتأسيس الشركات مدفوعة، وتحجزها بموعد تختاره وتدفع مباشرة أثناء الحجز. باقي الخدمات — السياحة، المخيمات، الدراسة الجامعية، والرعاية الإعلانية — تبدأ برسالة واتساب بدون رسوم.' },
+      { id:'f2', q:'إيه الفرق بين الإقامات وبرنامج MM2H؟', a:'في أكتر من مسار للإقامة في ماليزيا: تأشيرة الطالب، تأشيرات العمل وحاملي المهارات، وبرنامج «ماليزيا بيتي الثاني» MM2H للإقامة طويلة الأمد. الاستشارة بتحدد المسار المناسب لحالتك وشروطه ومتطلباته قبل ما تبدأ أي إجراء.' },
+      { id:'f3', q:'هل تساعدون في السكن والإجراءات بعد الوصول؟', a:'نعم. استشارة «الانتقال والحياة» تغطي إيجاد السكن، تكاليف المعيشة، فتح الحساب البنكي، وتسجيل الأطفال في المدارس.' },
+      { id:'f4', q:'ينفع أجنبي يأسس شركة في ماليزيا؟', a:'نعم، ماليزيا بيئة أعمال مفتوحة وفيها أكتر من كيان قانوني متاح للأجانب. استشارة تأسيس الشركات بتغطي اختيار الكيان المناسب، الفرانشيز، وقنوات الاستيراد والتصدير، وعلاقة الشركة بالإقامة.' },
+    ];
+  }
+
+  buildAdminPanel(prices) {
+    const F = 'IBM Plex Sans Arabic, sans-serif';
+    const pkgs = [
+      { id:'A', name:'برنامج A — 8 أيام | KL · جنتنج · لنكاوي' },
+      { id:'B', name:'برنامج B — 8 أيام | KL · جنتنج · كاميرون · بينانج · إيبوه' },
+      { id:'C', name:'برنامج C — 7 أيام | KL · جنتنج · كاميرون · بينانج · إيبوه' },
+      { id:'D', name:'برنامج D — 9 أيام | KL · جنتنج · كاميرون · بينانج · لنكاوي' },
+    ];
+    return React.createElement('div', { style:{ position:'fixed', top:0, left:0, right:0, bottom:0, background:'rgba(0,0,0,0.5)', zIndex:9999, display:'flex', alignItems:'flex-start', justifyContent:'center', padding:'20px', overflowY:'auto', direction:'rtl' } },
+      React.createElement('div', { style:{ background:'#fff', borderRadius:'20px', padding:'28px', width:'100%', maxWidth:'560px', marginTop:'20px', boxShadow:'0 20px 60px rgba(0,0,0,0.3)' } },
+        React.createElement('div', { style:{ display:'flex', alignItems:'center', justifyContent:'space-between', marginBottom:'24px' } },
+          React.createElement('div', null,
+            React.createElement('h2', { style:{ margin:0, fontSize:'18px', fontWeight:'800', color:'#1A1733', fontFamily:F } }, '⚙️ لوحة تحكم الأسعار'),
+            React.createElement('p', { style:{ margin:'4px 0 0', fontSize:'12px', color:'#AAA', fontFamily:F } }, 'تغييراتك تُحفظ تلقائياً في المتصفح')
+          ),
+          React.createElement('button', { onClick:()=>this.setState({ showAdmin:false }), style:{ width:'32px', height:'32px', borderRadius:'50%', border:'none', background:'#F4F4F5', cursor:'pointer', fontSize:'16px', fontFamily:F } }, '✕')
+        ),
+        ...pkgs.map(pkg =>
+          React.createElement('div', { key:pkg.id, style:{ background:'#F7FAFE', borderRadius:'14px', padding:'16px', marginBottom:'14px', border:'1px solid #D6E6F8' } },
+            React.createElement('div', { style:{ fontSize:'12px', fontWeight:'700', color:'#0069CA', marginBottom:'12px', fontFamily:F } }, pkg.name),
+            React.createElement('div', { style:{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'12px' } },
+              ['4','5'].map(star =>
+                React.createElement('div', { key:star },
+                  React.createElement('label', { style:{ display:'block', fontSize:'11px', fontWeight:'600', color:'#555', marginBottom:'5px', fontFamily:F } }, `⭐${star} نجوم — سعر البالغ ($)`),
+                  React.createElement('div', { style:{ display:'flex', alignItems:'center', gap:'6px', background:'#fff', border:'1.5px solid #E8E8E8', borderRadius:'10px', padding:'8px 12px' } },
+                    React.createElement('span', { style:{ color:'#AAA', fontSize:'13px', fontFamily:F } }, '$'),
+                    React.createElement('input', {
+                      type:'number', min:'0', step:'50',
+                      value: prices[`${pkg.id}${star}`] || '',
+                      onChange: (e) => {
+                        const newPrices = { ...prices, [`${pkg.id}${star}`]: parseInt(e.target.value)||0 };
+                        this.savePrices(newPrices);
+                        this.setState({ adminPrices: newPrices });
+                      },
+                      style:{ flex:1, border:'none', outline:'none', fontSize:'15px', fontWeight:'700', color:'#1A1733', fontFamily:F, background:'transparent', direction:'ltr', textAlign:'right' }
+                    })
+                  )
+                )
+              )
+            )
+          )
+        ),
+        React.createElement('div', { style:{ background:'#F1F6FD', borderRadius:'12px', padding:'12px 16px', marginTop:'4px', display:'flex', alignItems:'center', gap:'8px' } },
+          React.createElement('span', { style:{ fontSize:'18px' } }, '✅'),
+          React.createElement('span', { style:{ fontSize:'12px', fontWeight:'600', color:'#16A34A', fontFamily:F } }, 'الأسعار تُحفظ تلقائياً وتنعكس على الموقع فور التغيير')
+        )
+      )
+    );
+  }
+
+  buildBookingForm(s, calendar) {
+    const F = 'IBM Plex Sans Arabic, sans-serif';
+    const pkg = s.c6_pkg;
+    const rawPrices = s.adminPrices || this.getDefaultPrices();
+    const tourPrices = {
+      A:{ 4: rawPrices.A4||1100, 5: rawPrices.A5||1800 },
+      B:{ 4: rawPrices.B4||1300, 5: rawPrices.B5||1900 },
+      C:{ 4: rawPrices.C4||1200, 5: rawPrices.C5||1700 },
+      D:{ 4: rawPrices.D4||1600, 5: rawPrices.D5||2200 },
+    };
+    const tourNames  = { A:'8 أيام | كوالالمبور · جنتنج · لنكاوي', B:'8 أيام | كوالالمبور · جنتنج · كاميرون · بينانج · إيبوه', C:'7 أيام | كوالالمبور · جنتنج · كاميرون · بينانج · إيبوه', D:'9 أيام | كوالالمبور · جنتنج · كاميرون · بينانج · لنكاوي' };
+    const hotelsByPkg = {
+      A:[ {city:'كوالالمبور', opts:[{n:'ibis Styles KL Raja Chulan',s:4},{n:'Royale Chulan Kuala Lumpur',s:5}]}, {city:'جنتنج هايلاندز', opts:[{n:'First World Hotel',s:4},{n:'Resorts World Genting',s:5}]}, {city:'لنكاوي', opts:[{n:'Bayview Hotel Langkawi',s:4},{n:'The Westin Langkawi Resort',s:5}]} ],
+      B:[ {city:'كوالالمبور', opts:[{n:'ibis Styles KL',s:4},{n:'Royale Chulan KL',s:5}]}, {city:'جنتنج هايلاندز', opts:[{n:'First World Hotel',s:4},{n:'Resorts World Genting',s:5}]}, {city:'كاميرون هايلاندز', opts:[{n:'Heritage Hotel Cameron',s:4},{n:'Cameron Highlands Resort',s:5}]}, {city:'بينانج', opts:[{n:'Cititel Penang',s:4},{n:'Eastern & Oriental Hotel',s:5}]}, {city:'إيبوه', opts:[{n:'Hotel Casuarina Ipoh',s:4},{n:'The Haven Resort Ipoh',s:5}]} ],
+      C:[ {city:'كوالالمبور', opts:[{n:'ibis Styles KL',s:4},{n:'Royale Chulan KL',s:5}]}, {city:'جنتنج هايلاندز', opts:[{n:'First World Hotel',s:4},{n:'Resorts World Genting',s:5}]}, {city:'كاميرون هايلاندز', opts:[{n:'Heritage Hotel Cameron',s:4},{n:'Cameron Highlands Resort',s:5}]}, {city:'بينانج', opts:[{n:'Cititel Penang',s:4},{n:'Eastern & Oriental Hotel',s:5}]}, {city:'إيبوه', opts:[{n:'Hotel Casuarina Ipoh',s:4},{n:'The Haven Resort Ipoh',s:5}]} ],
+      D:[ {city:'كوالالمبور', opts:[{n:'ibis Styles KL',s:4},{n:'Royale Chulan KL',s:5}]}, {city:'جنتنج هايلاندز', opts:[{n:'First World Hotel',s:4},{n:'Resorts World Genting',s:5}]}, {city:'كاميرون هايلاندز', opts:[{n:'Heritage Hotel Cameron',s:4},{n:'Cameron Highlands Resort',s:5}]}, {city:'بينانج', opts:[{n:'Cititel Penang',s:4},{n:'Eastern & Oriental Hotel',s:5}]}, {city:'لنكاوي', opts:[{n:'Bayview Hotel Langkawi',s:4},{n:'The Westin Langkawi Resort',s:5}]} ],
+    };
+    const destHotels = hotelsByPkg[pkg] || [];
+    const sel = s.c6_hotel_sel;
+    const fiveCount = destHotels.filter(d => (d.opts[sel[d.city] ?? 0]?.s === 5)).length;
+    const effStar = (fiveCount > 0 && fiveCount >= destHotels.length / 2) ? '5' : '4';
+    const adultPrice = tourPrices[pkg]?.[effStar] || 0;
+    const childPrice = Math.round(adultPrice * 0.75);
+    const adults   = parseInt(s.c6_adults)          || 0;
+    const children = parseInt(s.c6_children_count)  || 0;
+    const infants  = parseInt(s.c6_infants)         || 0;
+    const total    = adults * adultPrice + children * childPrice;
+    const rooms    = s.c6_rooms || 1;
+
+    const pad = n => String(n).padStart(2,'0');
+    const mn = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+    const fmtD = d => { if(!d) return ''; const [y,m,dd] = d.split('-'); return `${+dd} ${mn[+m-1]} ${y}`; };
+    const dateLabel = s.c6_date_from && s.c6_date_to ? `من ${fmtD(s.c6_date_from)} — إلى ${fmtD(s.c6_date_to)}` : '';
+
+    const roomTypes = ['غرفة مزدوجة (Double)','غرفة ثنائية (Twin)','غرفة ثلاثية (Triple)','غرفة عائلية (Family)','جناح (Suite)'];
+    const isReady = adults > 0 && s.c6_date_confirmed && s.c6_date_from && s.c6_date_to && s.c6_room_type;
+
+    const waText = `مرحباً، أرغب في حجز رحلة سياحية.\n\nالبرنامج: ${tourNames[pkg]}\nالفنادق:\n${destHotels.map(d=>`  • ${d.city}: ${d.opts[sel[d.city]??0]?.n}`).join('\n')}\nميعاد السفر: ${dateLabel}\nعدد الغرف: ${rooms}\nالبالغين (12+): ${adults}\nالأطفال (3-12): ${children}\nالرضع (<3): ${infants} (مجانيون)\nنوع الغرف: ${s.c6_room_type || 'لم يُحدد'}\nإجمالي الأشخاص: ${adults + children + infants}\nالسعر التقريبي الإجمالي: $${total.toLocaleString()}`;
+    const waLink = `https://wa.me/601163510182?text=${encodeURIComponent(waText)}`;
+
+    const section = (title, children2) => React.createElement('div', { style:{ marginBottom:'20px' } },
+      React.createElement('div', { style:{ fontSize:'13px', fontWeight:'700', color:'#1A1733', marginBottom:'10px', fontFamily:F, display:'flex', alignItems:'center', gap:'6px' } },
+        React.createElement('div', { style:{ width:'4px', height:'16px', background:'#0069CA', borderRadius:'2px', flexShrink:0 } }),
+        title
+      ),
+      children2
+    );
+
+    return React.createElement('div', { style:{ animation:'fadeUp 220ms ease' } },
+
+      // Program summary
+      React.createElement('div', { style:{ display:'flex', alignItems:'center', justifyContent:'space-between', background:'#F7FAFE', borderRadius:'14px', padding:'12px 16px', marginBottom:'22px', border:'1px solid #D6E6F8' } },
+        React.createElement('div', { style:{ display:'flex', alignItems:'center', gap:'10px' } },
+          React.createElement('span', { style:{ fontSize:'20px' } }, '🗺️'),
+          React.createElement('div', null,
+            React.createElement('div', { style:{ fontSize:'11px', color:'#AAA', fontFamily:F } }, 'البرنامج المختار'),
+            React.createElement('div', { style:{ fontSize:'13px', fontWeight:'700', color:'#1A1733', fontFamily:F } }, tourNames[pkg] || '')
+          )
+        ),
+        React.createElement('button', { onClick:() => this.setState({ c6_pkg:'', c6_hotel_sel:{}, c6_star:'', c6_rooms:1, c6_room_type:'', c6_date_type:'', c6_date_from:'', c6_date_to:'', c6_date_confirmed:false }), style:{ background:'none', border:'none', color:'#0069CA', fontSize:'12px', fontWeight:'600', cursor:'pointer', fontFamily:F, textDecoration:'underline', padding:0 } }, 'تغيير')
+      ),
+
+      // Hotels per destination
+      section('اختر الفندق لكل وجهة',
+        React.createElement('div', { style:{ display:'flex', flexDirection:'column', gap:'14px' } },
+          ...destHotels.map((dest, di) => {
+            const hotelSel = sel[dest.city] ?? null;
+            return React.createElement('div', { key:di },
+              React.createElement('div', { style:{ fontSize:'12px', fontWeight:'700', color:'#0069CA', marginBottom:'7px', fontFamily:F } }, `📍 ${dest.city}`),
+              React.createElement('div', { style:{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'8px' } },
+                ...dest.opts.map((hotel, hi) => {
+                  const isSel = hotelSel === hi;
+                  return React.createElement('div', { key:hi, onClick:() => this.setState(prev=>({ c6_hotel_sel:{ ...prev.c6_hotel_sel, [dest.city]:hi } })), style:{ border:`2px solid ${isSel?'#0069CA':'#E8E8E8'}`, background:isSel?'#EEF5FD':'#fff', borderRadius:'12px', padding:'10px 12px', cursor:'pointer', transition:'all 140ms' } },
+                    React.createElement('div', { style:{ fontSize:'12px', fontWeight:'700', color:'#1A1733', marginBottom:'4px', fontFamily:F } }, hotel.n),
+                    React.createElement('div', { style:{ fontSize:'11px', color: hotel.s===5?'#3B8FE0':'#888', fontFamily:F } }, '⭐'.repeat(hotel.s) + ` ${hotel.s} نجوم`)
+                  );
+                })
+              )
+            );
+          })
+        )
+      ),
+
+      // Date
+      section('ميعاد السفر',
+        s.c6_date_confirmed && s.c6_date_from && s.c6_date_to
+          ? React.createElement('div', { style:{ display:'flex', alignItems:'center', justifyContent:'space-between', background:'#E8F1FC', border:'1.5px solid #C4DAF3', borderRadius:'12px', padding:'12px 16px' } },
+              React.createElement('div', { style:{ display:'flex', alignItems:'center', gap:'8px' } },
+                React.createElement('span', { style:{ fontSize:'18px' } }, '📅'),
+                React.createElement('span', { style:{ fontSize:'13px', fontWeight:'700', color:'#1D4ED8', fontFamily:F } }, dateLabel)
+              ),
+              React.createElement('button', { onClick:()=>this.setState({ c6_date_confirmed:false, c6_date_from:'', c6_date_to:'' }), style:{ background:'none', border:'none', color:'#0069CA', fontSize:'12px', fontWeight:'600', cursor:'pointer', fontFamily:F, textDecoration:'underline', padding:0 } }, 'تعديل')
+            )
+          : calendar
+      ),
+
+      // Rooms
+      section('عدد الغرف',
+        React.createElement('div', { style:{ display:'flex', alignItems:'center', gap:'16px' } },
+          React.createElement('button', { onClick:()=>this.setState(p=>({ c6_rooms:Math.max(1,p.c6_rooms-1) })), style:{ width:'36px', height:'36px', borderRadius:'50%', border:'2px solid #E8E8E8', background:'#fff', fontSize:'18px', cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center', color:'#555', fontFamily:F } }, '−'),
+          React.createElement('span', { style:{ fontSize:'20px', fontWeight:'800', color:'#1A1733', minWidth:'24px', textAlign:'center', fontFamily:F } }, rooms),
+          React.createElement('button', { onClick:()=>this.setState(p=>({ c6_rooms:p.c6_rooms+1 })), style:{ width:'36px', height:'36px', borderRadius:'50%', border:'2px solid #0069CA', background:'#0069CA', fontSize:'18px', cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center', color:'#fff', fontFamily:F } }, '+')
+        )
+      ),
+
+      // People
+      section('عدد الأشخاص',
+        React.createElement('div', { style:{ display:'flex', flexDirection:'column', gap:'10px' } },
+          // Adults
+          React.createElement('div', { style:{ display:'flex', alignItems:'center', justifyContent:'space-between', background:'#F7FAFE', borderRadius:'12px', padding:'12px 16px', border:'1px solid #E8E8E8' } },
+            React.createElement('div', null,
+              React.createElement('div', { style:{ fontSize:'13px', fontWeight:'700', color:'#1A1733', fontFamily:F } }, 'البالغون'),
+              React.createElement('div', { style:{ fontSize:'11px', color:'#AAA', fontFamily:F } }, 'السن 12 سنة فأكثر')
+            ),
+            React.createElement('div', { style:{ display:'flex', alignItems:'center', gap:'12px' } },
+              React.createElement('button', { onClick:()=>this.setState(p=>({ c6_adults:String(Math.max(0,parseInt(p.c6_adults||0)-1)) })), style:{ width:'30px', height:'30px', borderRadius:'50%', border:'2px solid #E8E8E8', background:'#fff', fontSize:'16px', cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center', fontFamily:F } }, '−'),
+              React.createElement('span', { style:{ fontSize:'18px', fontWeight:'800', color:'#1A1733', minWidth:'20px', textAlign:'center', fontFamily:F } }, adults),
+              React.createElement('button', { onClick:()=>this.setState(p=>({ c6_adults:String(parseInt(p.c6_adults||0)+1) })), style:{ width:'30px', height:'30px', borderRadius:'50%', border:'2px solid #0069CA', background:'#0069CA', fontSize:'16px', cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center', color:'#fff', fontFamily:F } }, '+')
+            )
+          ),
+          // Children 3-12
+          React.createElement('div', { style:{ display:'flex', alignItems:'center', justifyContent:'space-between', background:'#F7FAFE', borderRadius:'12px', padding:'12px 16px', border:'1px solid #E8E8E8' } },
+            React.createElement('div', null,
+              React.createElement('div', { style:{ fontSize:'13px', fontWeight:'700', color:'#1A1733', fontFamily:F } }, 'الأطفال'),
+              React.createElement('div', { style:{ fontSize:'11px', color:'#AAA', fontFamily:F } }, 'من 3 إلى 12 سنة · 75% من سعر البالغ')
+            ),
+            React.createElement('div', { style:{ display:'flex', alignItems:'center', gap:'12px' } },
+              React.createElement('button', { onClick:()=>this.setState(p=>({ c6_children_count:String(Math.max(0,parseInt(p.c6_children_count||0)-1)) })), style:{ width:'30px', height:'30px', borderRadius:'50%', border:'2px solid #E8E8E8', background:'#fff', fontSize:'16px', cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center', fontFamily:F } }, '−'),
+              React.createElement('span', { style:{ fontSize:'18px', fontWeight:'800', color:'#1A1733', minWidth:'20px', textAlign:'center', fontFamily:F } }, children),
+              React.createElement('button', { onClick:()=>this.setState(p=>({ c6_children_count:String(parseInt(p.c6_children_count||0)+1) })), style:{ width:'30px', height:'30px', borderRadius:'50%', border:'2px solid #0069CA', background:'#0069CA', fontSize:'16px', cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center', color:'#fff', fontFamily:F } }, '+')
+            )
+          ),
+          // Infants
+          React.createElement('div', { style:{ display:'flex', alignItems:'center', justifyContent:'space-between', background:'#F1F6FD', borderRadius:'12px', padding:'12px 16px', border:'1px solid #C4DAF3' } },
+            React.createElement('div', null,
+              React.createElement('div', { style:{ fontSize:'13px', fontWeight:'700', color:'#1A1733', fontFamily:F } }, 'الرضع'),
+              React.createElement('div', { style:{ fontSize:'11px', color:'#16A34A', fontFamily:F } }, 'أقل من 3 سنوات · مجانيون ✓')
+            ),
+            React.createElement('div', { style:{ display:'flex', alignItems:'center', gap:'12px' } },
+              React.createElement('button', { onClick:()=>this.setState(p=>({ c6_infants:String(Math.max(0,parseInt(p.c6_infants||0)-1)) })), style:{ width:'30px', height:'30px', borderRadius:'50%', border:'2px solid #E8E8E8', background:'#fff', fontSize:'16px', cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center', fontFamily:F } }, '−'),
+              React.createElement('span', { style:{ fontSize:'18px', fontWeight:'800', color:'#1A1733', minWidth:'20px', textAlign:'center', fontFamily:F } }, infants),
+              React.createElement('button', { onClick:()=>this.setState(p=>({ c6_infants:String(parseInt(p.c6_infants||0)+1) })), style:{ width:'30px', height:'30px', borderRadius:'50%', border:'2px solid #16A34A', background:'#16A34A', fontSize:'16px', cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center', color:'#fff', fontFamily:F } }, '+')
+            )
+          ),
+          // Total summary
+          adults + children + infants > 0 ? React.createElement('div', { style:{ background:'#E8F1FC', borderRadius:'12px', padding:'10px 16px', display:'flex', justifyContent:'space-between', alignItems:'center' } },
+            React.createElement('span', { style:{ fontSize:'13px', fontWeight:'700', color:'#0069CA', fontFamily:F } }, 'إجمالي الأشخاص'),
+            React.createElement('span', { style:{ fontSize:'16px', fontWeight:'800', color:'#0069CA', fontFamily:F } }, `${adults + children + infants} شخص`)
+          ) : null
+        )
+      ),
+
+      // Room type
+      section('نوع الغرفة',
+        React.createElement('div', { style:{ display:'flex', flexWrap:'wrap', gap:'8px' } },
+          ...roomTypes.map((rt, i) => {
+            const isSel = s.c6_room_type === rt;
+            return React.createElement('div', { key:i, onClick:()=>this.set('c6_room_type', rt), style:{ border:`1.5px solid ${isSel?'#0069CA':'#E8E8E8'}`, background:isSel?'#EEF5FD':'#fff', borderRadius:'9999px', padding:'7px 14px', cursor:'pointer', fontSize:'12px', fontWeight:'600', color:isSel?'#0069CA':'#555', fontFamily:F, transition:'all 140ms' } }, rt);
+          })
+        )
+      ),
+
+      // Total calculation
+      total > 0 ? React.createElement('div', { style:{ background:'linear-gradient(135deg,#F7FAFE,#E8F1FC)', border:'2px solid #C4DAF3', borderRadius:'16px', padding:'16px 18px', marginBottom:'16px' } },
+        React.createElement('div', { style:{ fontSize:'12px', fontWeight:'700', color:'#AAA', marginBottom:'10px', fontFamily:F } }, 'حسبة الإجمالي التقريبي'),
+        adults > 0 ? React.createElement('div', { style:{ display:'flex', justifyContent:'space-between', fontSize:'13px', color:'#555', fontFamily:F, marginBottom:'5px' } },
+          React.createElement('span', null, `${adults} بالغ × $${adultPrice.toLocaleString()}`),
+          React.createElement('span', { style:{ fontWeight:'700' } }, `$${(adults * adultPrice).toLocaleString()}`)
+        ) : null,
+        children > 0 ? React.createElement('div', { style:{ display:'flex', justifyContent:'space-between', fontSize:'13px', color:'#555', fontFamily:F, marginBottom:'5px' } },
+          React.createElement('span', null, `${children} طفل × $${childPrice.toLocaleString()}`),
+          React.createElement('span', { style:{ fontWeight:'700' } }, `$${(children * childPrice).toLocaleString()}`)
+        ) : null,
+        infants > 0 ? React.createElement('div', { style:{ display:'flex', justifyContent:'space-between', fontSize:'13px', color:'#16A34A', fontFamily:F, marginBottom:'5px' } },
+          React.createElement('span', null, `${infants} رضيع`),
+          React.createElement('span', { style:{ fontWeight:'700' } }, 'مجاناً')
+        ) : null,
+        React.createElement('div', { style:{ height:'1px', background:'#C4DAF3', margin:'10px 0' } }),
+        React.createElement('div', { style:{ display:'flex', justifyContent:'space-between', alignItems:'center' } },
+          React.createElement('span', { style:{ fontSize:'14px', fontWeight:'800', color:'#1A1733', fontFamily:F } }, 'الإجمالي التقريبي'),
+          React.createElement('span', { style:{ fontSize:'22px', fontWeight:'900', color:'#0069CA', fontFamily:F } }, `$${total.toLocaleString()}`)
+        ),
+        React.createElement('div', { style:{ fontSize:'10px', color:'#AAA', marginTop:'5px', fontFamily:F } }, '* السعر تقريبي ويتضمن الإقامة والبرنامج — لا يشمل التأشيرة والتذاكر')
+      ) : null,
+
+      // Payment link
+      isReady ? React.createElement('a', { href:'https://payment.telbosho.com', target:'_blank', style:{ display:'flex', alignItems:'center', justifyContent:'center', gap:'10px', background:'#0069CA', color:'#fff', padding:'16px 28px', borderRadius:'9999px', fontSize:'16px', fontWeight:'700', textDecoration:'none', boxShadow:'0 8px 24px rgba(0,105,202,0.28)', marginBottom:'12px', fontFamily:F } },
+        '💳 ادفع الآن عبر Payment Link'
+      ) : null,
+
+      // WhatsApp
+      React.createElement('a', { href: waLink, target:'_blank', style:{ display:'flex', alignItems:'center', justifyContent:'center', gap:'10px', background: isReady?'#1A9E50':'#9CA3AF', color:'#fff', padding:'14px 28px', borderRadius:'9999px', fontSize:'15px', fontWeight:'700', textDecoration:'none', fontFamily:F, cursor: isReady?'pointer':'not-allowed' } },
+        React.createElement('svg', { xmlns:'http://www.w3.org/2000/svg', height:'20px', viewBox:'0 -960 960 960', width:'20px', fill:'#fff', style:{ flexShrink:0 } },
+          React.createElement('path', { d:'M80-80v-720q0-33 23.5-56.5T160-880h640q33 0 56.5 23.5T880-800v480q0 33-23.5 56.5T800-240H240L80-80Zm126-240h594v-480H160v525l46-45Zm-46 0v-480 480Z' })
+        ),
+        isReady ? 'أرسل ملخص الحجز عبر WhatsApp' : `⚠️ أكمل: ${[adults===0&&'عدد البالغين', !s.c6_date_confirmed&&'التاريخ', !s.c6_room_type&&'نوع الغرفة'].filter(Boolean).join(' · ')}`
+      )
+    );
+  }
+
+  buildTourCards(expandedPkg, selectedPkg) {
+    const prices = { A: { '4': 1100, '5': 1800 }, B: { '4': 1300, '5': 1900 }, C: { '4': 1200, '5': 1700 }, D: { '4': 1600, '5': 2200 } };
+    const F = 'IBM Plex Sans Arabic, sans-serif';
+    const programs = [
+      { id:'A', days:8, nights:7, headline:'كوالالمبور · جنتنج · لنكاوي', img:'', gradient:'linear-gradient(145deg,#0052A5,#1A9FE0)', places:['كوالالمبور','جنتنج هايلاندز','لنكاوي'],
+        itinerary:[
+          {day:1, title:'الوصول إلى كوالالمبور', desc:'استقبال في المطار، تسجيل الوصول، جولة ترحيبية في KLCC وبرجا بتروناس ليلاً'},
+          {day:2, title:'جولة كوالالمبور', desc:'كهوف باتو، ساحة مردكا، سوق المدينة المركزية، برج كوالالمبور'},
+          {day:3, title:'جنتنج هايلاندز', desc:'التلفريك الجبلي، الطقس البارد المنعش، منتجعات الجبل، عالم الألعاب'},
+          {day:4, title:'التسوق في كوالالمبور', desc:'Pavilion KL، Bukit Bintang، أسواق Petaling Street'},
+          {day:5, title:'الانتقال إلى لنكاوي', desc:'رحلة طيران داخلية، تسجيل الوصول في الفندق الساحلي، عشاء على البحر'},
+          {day:6, title:'معالم لنكاوي', desc:'تلفريك لنكاوي السكاي، ميدان النسر، عالم ما تحت الماء، الجسر السماوي'},
+          {day:7, title:'جزر لنكاوي', desc:'رحلة استكشاف الجزر البكر، السباحة، شواطئ خلابة، مأكولات بحرية'},
+          {day:8, title:'المغادرة', desc:'إفطار الوداع، التوصيل إلى المطار، رحلة العودة الآمنة'},
+        ]},
+      { id:'B', days:8, nights:7, headline:'كوالالمبور · جنتنج · كاميرون · بينانج · إيبوه', img:'', gradient:'linear-gradient(145deg,#1A7F4E,#4CAF79)', places:['كوالالمبور','جنتنج','كاميرون','بينانج','إيبوه'],
+        itinerary:[
+          {day:1, title:'الوصول إلى كوالالمبور', desc:'استقبال في المطار، تسجيل الوصول، جولة عشائية في KLCC'},
+          {day:2, title:'جولة كوالالمبور', desc:'برجا بتروناس، كهوف باتو، ساحة مردكا'},
+          {day:3, title:'جنتنج هايلاندز', desc:'التلفريك الجبلي، الطقس البارد، الترفيه والألعاب'},
+          {day:4, title:'مرتفعات كاميرون', desc:'مزارع الشاي الخضراء، قطف الفراولة، سوق الخضروات الجبلي'},
+          {day:5, title:'جورج تاون - بينانج', desc:'فن الشارع الشهير، تراث اليونسكو، مطاعم الأكل الشعبي'},
+          {day:6, title:'بينانج الكامل', desc:'تلفريك بينانج، معبد كيك لوك سي، شواطئ بينانج الذهبية'},
+          {day:7, title:'مدينة إيبوه', desc:'القهوة البيضاء الشهيرة، كهوف الجير، حارة المحظيات التاريخية'},
+          {day:8, title:'المغادرة', desc:'العودة إلى كوالالمبور، إفطار الوداع، التوصيل للمطار'},
+        ]},
+      { id:'C', days:7, nights:6, headline:'كوالالمبور · جنتنج · كاميرون · بينانج · إيبوه', img:'', gradient:'linear-gradient(145deg,#C4500A,#F5A835)', places:['كوالالمبور','جنتنج','كاميرون','بينانج','إيبوه'],
+        itinerary:[
+          {day:1, title:'الوصول والانطلاق', desc:'الوصول إلى كوالالمبور، تسجيل الوصول، جولة سريعة في برجا بتروناس'},
+          {day:2, title:'كوالالمبور وجنتنج', desc:'صباح في كوالالمبور ثم الانتقال لجنتنج، التلفريك والطقس البارد'},
+          {day:3, title:'مرتفعات كاميرون', desc:'مزارع الشاي الخضراء، الفراولة، سوق الجبل، طبيعة ساحرة'},
+          {day:4, title:'جورج تاون - بينانج', desc:'فن الشارع، التراث العالمي لليونسكو، مطاعم شعبية'},
+          {day:5, title:'إيبوه', desc:'القهوة البيضاء الأيقونية، الكهوف الجيرية، المباني الاستعمارية'},
+          {day:6, title:'كوالالمبور والتسوق', desc:'العودة، التسوق في Pavilion وBukit Bintang، وداع المدينة'},
+          {day:7, title:'المغادرة', desc:'إفطار الوداع، التوصيل إلى مطار KLIA، رحلة العودة الآمنة'},
+        ]},
+      { id:'D', days:9, nights:8, badge:'الأشمل', headline:'كوالالمبور · جنتنج · كاميرون · بينانج · لنكاوي', img:'', gradient:'linear-gradient(145deg,#1A3A7A,#7B96DF)', places:['كوالالمبور','جنتنج','كاميرون','بينانج','لنكاوي'],
+        itinerary:[
+          {day:1, title:'الوصول إلى كوالالمبور', desc:'استقبال مميز، تسجيل الوصول، عشاء ترحيبي'},
+          {day:2, title:'جولة كوالالمبور الكاملة', desc:'برجا بتروناس، كهوف باتو، ساحة مردكا، برج الاتصالات'},
+          {day:3, title:'جنتنج هايلاندز', desc:'التلفريك الجبلي، منتجعات الجبل، الطقس البارد'},
+          {day:4, title:'مرتفعات كاميرون', desc:'مزارع الشاي الخضراء، قطف الفراولة، هواء نقي'},
+          {day:5, title:'بينانج - جورج تاون', desc:'فن الشارع، التراث العالمي، المطاعم الشهيرة'},
+          {day:6, title:'إيبوه', desc:'القهوة البيضاء، الكهوف الجيرية، المباني الاستعمارية'},
+          {day:7, title:'✈️ طيران داخلي إلى لنكاوي', desc:'رحلة طيران مريحة، تسجيل الوصول في المنتجع الساحلي، غروب شمس لا يُنسى'},
+          {day:8, title:'جزر لنكاوي', desc:'رحلة الجزر البكر، السباحة والغطس، الشواطئ الذهبية، مأكولات بحرية'},
+          {day:9, title:'المغادرة من لنكاوي', desc:'إفطار الوداع، جولة أخيرة في السوق الحرة، رحلة العودة المباشرة'},
+        ]},
+    ];
+
+    return React.createElement('div', { style: { display:'flex', flexDirection:'column', gap:'16px', marginBottom:'24px', direction:'rtl' } },
+      ...programs.map(prog => {
+        const isExp = expandedPkg === prog.id;
+        const isSel = selectedPkg === prog.id;
+        if (selectedPkg && !isSel) return null;
+        const p4 = prices[prog.id]['4'];
+        return React.createElement('div', { key: prog.id, style: { background:'#fff', borderRadius:'20px', overflow:'hidden', boxShadow: isSel ? '0 8px 32px rgba(0,105,202,0.18)' : '0 4px 20px rgba(0,0,0,0.06)', border: isSel ? '2px solid #0069CA' : '1.5px solid #EBEBEB', transition:'all 200ms' } },
+          // Header with image
+          React.createElement('div', { style: { position:'relative', height:'150px', overflow:'hidden', borderRadius:'0' } },
+            React.createElement('img', { src: prog.img, alt: prog.headline, style: { width:'100%', height:'100%', objectFit:'cover', display:'block' } })
+          ),
+          // Body
+          React.createElement('div', { style: { padding:'16px 18px' } },
+            // Header info row
+            React.createElement('div', { style: { display:'flex', justifyContent:'space-between', alignItems:'flex-start', marginBottom:'10px' } },
+              React.createElement('div', { style: { flex:1 } },
+                React.createElement('div', { style: { fontSize:'13px', fontWeight:'800', color:'#1A1733', fontFamily:F } }, prog.headline)
+              ),
+              React.createElement('div', { style: { textAlign:'center', flexShrink:0, marginRight:'10px' } },
+                React.createElement('div', { style: { fontSize:'10px', color:'#AAA', fontFamily:F } }, 'يبدأ من'),
+                React.createElement('div', { style: { fontSize:'20px', fontWeight:'800', color:'#0069CA', fontFamily:F } }, `$${p4.toLocaleString()}`),
+                React.createElement('div', { style: { fontSize:'10px', color:'#AAA', fontFamily:F } }, `🗓 ${prog.days} أيام`)
+              )
+            ),
+            // Buttons
+            React.createElement('div', { style: { display:'flex', gap:'10px' } },
+              React.createElement('button', { onClick:() => this.setState(prev => ({ c6_expandedPkg: prev.c6_expandedPkg === prog.id ? null : prog.id })), style: { flex:1, background: isExp ? '#E8F1FC' : '#F7FAFE', border:`1.5px solid ${isExp ? '#0069CA' : '#D6E6F8'}`, borderRadius:'10px', padding:'9px 12px', fontSize:'12px', fontWeight:'600', color:'#0069CA', cursor:'pointer', fontFamily:F, display:'flex', alignItems:'center', justifyContent:'center', gap:'5px', transition:'all 140ms' } },
+                isExp ? '▲ إخفاء التفاصيل' : '▼ تفاصيل البرنامج'
+              ),
+              React.createElement('button', {
+                onClick:() => {
+                  if (isSel) {
+                    this.setState({ c6_pkg: '', c6_star:'', c6_date_type:'', c6_date_from:'', c6_date_to:'', c6_date_confirmed:false, c6_month:'' });
+                  } else {
+                    this.setState({ c6_pkg: prog.id, c6_expandedPkg: null, c6_star:'', c6_date_type:'', c6_date_from:'', c6_date_to:'', c6_date_confirmed:false, c6_month:'' });
+                  }
+                },
+                style: { flex:1, background: isSel ? '#0069CA' : '#0069CA', border:'none', borderRadius:'10px', padding:'9px 12px', fontSize:'13px', fontWeight:'700', color:'#fff', cursor:'pointer', fontFamily:F, display:'flex', alignItems:'center', justifyContent:'center', gap:'5px', boxShadow: isSel ? '0 4px 12px rgba(0,105,202,0.28)' : '0 4px 12px rgba(0,105,202,0.22)', transition:'all 160ms' }
+              }, isSel ? '✓ تم الاختيار — اضغط للتراجع' : 'احجز رحلتك ←')
+            ),
+            // Expanded itinerary
+            isExp ? React.createElement('div', { style: { marginTop:'16px', borderTop:'1px solid #F0F0F0', paddingTop:'16px' } },
+              React.createElement('div', { style: { fontSize:'12px', fontWeight:'700', color:'#1A1733', marginBottom:'14px', fontFamily:F } }, 'البرنامج اليومي التفصيلي'),
+              ...prog.itinerary.map((item,i) =>
+                React.createElement('div', { key:i, style: { display:'flex', gap:'12px', marginBottom: i < prog.itinerary.length-1 ? '12px' : '0', alignItems:'flex-start' } },
+                  React.createElement('div', { style: { width:'28px', height:'28px', borderRadius:'50%', background: prog.gradient, display:'flex', alignItems:'center', justifyContent:'center', fontSize:'11px', fontWeight:'800', color:'#fff', flexShrink:0, fontFamily:F } }, String(item.day)),
+                  React.createElement('div', { style: { flex:1 } },
+                    React.createElement('div', { style: { fontSize:'12px', fontWeight:'700', color:'#1A1733', marginBottom:'2px', fontFamily:F } }, item.title),
+                    React.createElement('div', { style: { fontSize:'11px', color:'#888', lineHeight:'1.6', fontFamily:F } }, item.desc)
+                  )
+                )
+              )
+            ) : null
+          )
+        );
+      })
+    );
+  }
+
+  buildCalendar(dateFrom, dateTo, year, month) {
+    const monthNames = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+    const dayNames   = ['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
+    const pad = n => String(n).padStart(2, '0');
+    const parseD = s => s ? new Date(s) : null;
+    const fmt = s => { if (!s) return ''; const [y,m,d] = s.split('-'); return `${+d} ${monthNames[+m-1]} ${y}`; };
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const firstDay    = new Date(year, month, 1).getDay();
+    const now = new Date(); now.setHours(0,0,0,0);
+    const fromD = parseD(dateFrom); if(fromD) fromD.setHours(0,0,0,0);
+    const toD   = parseD(dateTo);   if(toD)   toD.setHours(0,0,0,0);
+    const cells = [];
+    for (let i = 0; i < firstDay; i++) cells.push(null);
+    for (let d = 1; d <= daysInMonth; d++) cells.push(d);
+    while (cells.length % 7 !== 0) cells.push(null);
+    const goTo = (y, m) => { const d = new Date(y, m, 1); this.setState({ calYear: d.getFullYear(), calMonth: d.getMonth() }); };
+    const handleDay = (d) => {
+      const clicked = new Date(year, month, d); clicked.setHours(0,0,0,0);
+      const val = `${year}-${pad(month+1)}-${pad(d)}`;
+      if (!dateFrom || (dateFrom && dateTo)) {
+        this.setState({ c6_date_from: val, c6_date_to: '' });
+      } else {
+        if (clicked >= fromD) { this.set('c6_date_to', val); }
+        else { this.setState({ c6_date_from: val, c6_date_to: '' }); }
+      }
+    };
+    // Label
+    let label = null;
+    if (dateFrom && !dateTo) {
+      label = React.createElement('div', { style: { marginTop: '10px', textAlign: 'center', fontSize: '12px', color: '#888', background: '#F7FAFE', borderRadius: '8px', padding: '6px 10px' } },
+        `📅 من: ${fmt(dateFrom)} — اختر تاريخ العودة`);
+    } else if (dateFrom && dateTo) {
+      label = React.createElement('div', { style: { marginTop: '10px', textAlign: 'center', fontSize: '12px', fontWeight: '700', color: '#0069CA', background: '#E8F1FC', borderRadius: '8px', padding: '7px 10px' } },
+        `✓ من ${fmt(dateFrom)} — إلى ${fmt(dateTo)}`);
+    }
+    return React.createElement('div', { style: { border: '1.5px solid #E8E8E8', borderRadius: '16px', overflow: 'hidden', direction: 'rtl' } },
+      React.createElement('div', { style: { background: '#F7FAFE', borderBottom: '1px solid #EBEBEB', padding: '12px 16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', direction: 'rtl' } },
+        React.createElement('button', { onClick: () => goTo(year, month - 1), style: { background: 'none', border: 'none', cursor: 'pointer', color: '#0069CA', padding: '4px 8px', borderRadius: '8px', lineHeight: 1, display: 'flex', alignItems: 'center' } },
+          React.createElement('svg', { width: '18', height: '18', viewBox: '0 0 24 24', fill: 'none', stroke: '#0069CA', strokeWidth: '2.5' },
+            React.createElement('polyline', { points: '9,18 15,12 9,6' })
+          )
+        ),
+        React.createElement('span', { style: { fontSize: '14px', fontWeight: '700', color: '#1A1733' } }, `${monthNames[month]} ${year}`),
+        React.createElement('button', { onClick: () => goTo(year, month + 1), style: { background: 'none', border: 'none', cursor: 'pointer', color: '#0069CA', padding: '4px 8px', borderRadius: '8px', lineHeight: 1, display: 'flex', alignItems: 'center' } },
+          React.createElement('svg', { width: '18', height: '18', viewBox: '0 0 24 24', fill: 'none', stroke: '#0069CA', strokeWidth: '2.5' },
+            React.createElement('polyline', { points: '15,18 9,12 15,6' })
+          )
+        )
+      ),
+      React.createElement('div', { style: { padding: '12px 14px 14px' } },
+        React.createElement('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(7,1fr)', marginBottom: '6px', direction: 'rtl' } },
+          ...dayNames.map((d, i) => React.createElement('div', { key: i, style: { textAlign: 'center', fontSize: '10px', color: '#AAA', fontWeight: '700', padding: '4px 0' } }, d))
+        ),
+        React.createElement('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(7,1fr)', gap: '1px', direction: 'rtl' } },
+          ...cells.map((d, i) => {
+            if (!d) return React.createElement('div', { key: `e${i}` });
+            const dayD = new Date(year, month, d); dayD.setHours(0,0,0,0);
+            const isFrom  = fromD && dayD.getTime() === fromD.getTime();
+            const isTo    = toD   && dayD.getTime() === toD.getTime();
+            const inRange = fromD && toD && dayD > fromD && dayD < toD;
+            const isToday = now.getFullYear() === year && now.getMonth() === month && now.getDate() === d;
+            const isPast  = dayD < now;
+            let bg    = 'transparent';
+            let color = isPast ? '#DDD' : isToday ? '#0069CA' : '#1A1733';
+            let br    = '8px';
+            let fw    = '400';
+            if (isFrom || isTo) { bg = '#0069CA'; color = '#fff'; fw = '700'; }
+            else if (inRange)   { bg = '#DBEAFE'; color = '#1D4ED8'; }
+            if (isFrom) br = '0 8px 8px 0';   // RTL: right-rounded start
+            if (isTo)   br = '8px 0 0 8px';   // RTL: left-rounded end
+            if (inRange) br = '0';
+            return React.createElement('div', {
+              key: d,
+              onClick: isPast ? undefined : () => handleDay(d),
+              style: {
+                textAlign: 'center', padding: '8px 2px', borderRadius: br,
+                fontSize: '13px', fontWeight: fw, cursor: isPast ? 'default' : 'pointer',
+                background: bg, color,
+                border: isToday && !isFrom && !isTo ? '1.5px solid #0069CA' : '1.5px solid transparent',
+              }
+            }, d);
+          })
+        ),
+        label,
+        dateFrom && dateTo ? React.createElement('button', {
+          onClick: () => this.set('c6_date_confirmed', true),
+          style: { width: '100%', marginTop: '12px', background: '#0069CA', color: '#fff', border: 'none', borderRadius: '10px', padding: '11px 20px', fontSize: '14px', fontWeight: '700', cursor: 'pointer', fontFamily: 'IBM Plex Sans Arabic, sans-serif', display: 'block' }
+        }, 'تأكيد الاختيار ✓') : null
+      )
+    );
+  }
+
+  getDefaultPrices() {
+    return { A4:1100, A5:1800, B4:1300, B5:1900, C4:1200, C5:1700, D4:1600, D5:2200 };
+  }
+
+  loadPrices() {
+    try {
+      const saved = localStorage.getItem('telbosho_tour_prices');
+      return saved ? JSON.parse(saved) : this.getDefaultPrices();
+    } catch(e) { return this.getDefaultPrices(); }
+  }
+
+  savePrices(prices) {
+    try { localStorage.setItem('telbosho_tour_prices', JSON.stringify(prices)); } catch(e) {}
+  }
+
+  componentDidMount() {
+    const t0 = Date.now();
+    const done = () => {
+      const wait = Math.max(0, 900 - (Date.now() - t0));
+      setTimeout(() => { this.setState({ preloader: 'fading' }); setTimeout(() => this.setState({ preloader: 'off' }), 420); }, wait);
+    };
+    if (document.readyState === 'complete') done(); else window.addEventListener('load', done, { once: true });
+    setTimeout(() => { if (this.state.preloader === 'on') done(); }, 6000);
+    const prices = this.loadPrices();
+    const isAdmin = new URLSearchParams(window.location.search).get('admin') === '1';
+    this.setState({ adminPrices: prices, showAdmin: isAdmin });
+  }
+
+  openBookingWith(d) {
+    if (!this.state.bookingOpen) { this._scrollY = window.scrollY; document.body.style.overflow = 'hidden'; }
+    this.setState({ consultDuration: d, bookingOpen: true });
+  }
+  closeBooking() {
+    document.body.style.overflow = '';
+    this.setState({ bookingOpen: false });
+    const y = this._scrollY || 0; requestAnimationFrame(() => window.scrollTo(0, y));
+  }
+
+  toggle(id) {
+    const autoDuration = (id === 3 || id === 9) ? '60' : null;
+    this.setState({ expandedCard: id, consultDuration: autoDuration });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  set(key, val) { this.setState({ [key]: val }); }
+
+  wa(text) {
+    return `https://wa.me/601163510182?text=${encodeURIComponent(text)}`;
+  }
+
+  renderVals() {
+    const s = this.state;
+    const ec = s.expandedCard;
+
+    // ── Segment config ──
+    const segCfg = {
+      tourism: { title: 'اتفسح في ماليزيا',           emoji: '🏖',  color: '#0069CA', badgeBg: '#F1F6FD', sub: 'رحلات سياحية ومخيمات لغوية مصممة للعائلات العربية' },
+      study:   { title: 'ادرس في ماليزيا',             emoji: '🎓',  color: '#0069CA', badgeBg: '#E8F1FC', sub: 'الجامعات والمدارس ودراسة اللغة في ماليزيا'          },
+      settle:  { title: 'الإقامة والانتقال لماليزيا',  emoji: '🏡',  color: '#0069CA', badgeBg: '#F1F6FD', sub: 'كافة أنواع الإقامات والسكن وإجراءات الاستقرار'      },
+      invest:  { title: 'الاستثمار وتأسيس الأعمال',    emoji: '📈',  color: '#0069CA', badgeBg: '#F1F6FD', sub: 'تأسيس الشركات، الفرانشيز، والاستيراد والتصدير'      },
+      sponsor: { title: 'كن راعياً حصرياً في تلبوشو', emoji: '⭐', color: '#0069CA', badgeBg: '#F1F6FD', sub: 'رعاية إعلانية حصرية لأصحاب الأعمال في ماليزيا'      },
+    };
+    const sc = segCfg[s.segment] || { color: '#0069CA', badgeBg: '#E8F1FC', title: '', emoji: '', sub: '' };
+
+    // ── All cards ──
+    const allCards = [
+      { id: 1, icon: '💳', title: 'الإقامات وبرامج ماليزيا بيتي الثاني MM2H',         sub: 'تأشيرات وإقامات طويلة',   seg: 'settle',  cta: 'احجز استشارة', accentColor: '#0069CA', iconBg: '#F1F6FD' },
+      { id: 2, icon: '🏠', title: 'الانتقال والحياة',              sub: 'سكن وإجراءات الاستقرار', seg: 'settle',  cta: 'احجز استشارة', accentColor: '#0069CA', iconBg: '#F1F6FD' },
+      { id: 3,  icon: '💼', title: 'تأسيس وفتح شركة في ماليزيا',          sub: 'الكيان القانوني والتراخيص',  seg: 'invest', cta: 'احجز استشارة', accentColor: '#0069CA', iconBg: '#F1F6FD' },
+      { id: 9,  icon: '🏪', title: 'استثمار فرانشايز',                     sub: 'امتلاك علامة قائمة في ماليزيا', seg: 'invest', cta: 'احجز استشارة', accentColor: '#0069CA', iconBg: '#F1F6FD' },
+      { id: 10, icon: '📦', title: 'استيراد من ماليزيا · الصين · تركيا',   sub: 'مصادر وشحن وإجراءات',        seg: 'invest', cta: 'احجز استشارة', accentColor: '#0069CA', iconBg: '#F1F6FD' },
+      { id: 4, icon: '🎒', title: 'المدارس',                       sub: 'اختيار ومتابعة التسجيل', seg: 'study',   cta: 'احجز استشارة', accentColor: '#0069CA', iconBg: '#E8F1FC' },
+      { id: 5, icon: '🎓', title: 'الدراسة الجامعية',              sub: 'تسجيل وقبول جامعي',      seg: 'study',   cta: 'تواصل معنا',   accentColor: '#0069CA', iconBg: '#E8F1FC' },
+      { id: 6, icon: '👨‍👩‍👧‍👦', title: 'السياحة والرحلات',     sub: 'باقات مخصصة لماليزيا',   seg: 'tourism', cta: 'خطط لرحلتك',               accentColor: '#0069CA', iconBg: '#F1F6FD' },
+      { id: 7, icon: '🗣️', title: 'مخيمات اللغة الإنجليزية والعربية', sub: 'انغماس لغوي وتربوي', seg: 'study', cta: 'اشترك في المخيمات السنوية', accentColor: '#0069CA', iconBg: '#E8F1FC' },
+      { id: 8, icon: '⭐',  title: 'التسويق والرعاية الحصرية',    sub: 'رعاية لأصحاب الأعمال',   seg: 'sponsor', cta: 'تواصل معنا',   accentColor: '#0069CA', iconBg: '#F1F6FD' },
+    ];
+
+    // ── Cat A meta ──
+    const catAMeta = {
+      1: { icon: '💳', title: 'الإقامات وبرامج ماليزيا بيتي الثاني MM2H',         desc: 'نساعدك في استيعاب كل خيارات الإقامة في ماليزيا، من تأشيرات الطلاب وحاملي المهارات إلى برنامج MM2H للإقامة طويلة الأمد. جلسة مباشرة مع خبير معتمد.' },
+      2: { icon: '🏠', title: 'الانتقال والحياة',             desc: 'من إيجاد السكن المناسب في كوالالمبور إلى فهم تكاليف المعيشة وفتح الحسابات البنكية وتسجيل الأطفال — استشارة شاملة للاستقرار الناجح.' },
+      3: { icon: '💼', title: 'تأسيس وفتح شركة في ماليزيا',   desc: 'ماليزيا بيئة أعمال مفتوحة للأجانب. استشارة لاختيار الكيان القانوني المناسب، خطوات التسجيل الرسمية، التراخيص المطلوبة، وعلاقة الشركة بالإقامة والحساب البنكي.' },
+      9: { icon: '🏪', title: 'استثمار فرانشايز',             desc: 'امتلاك فرع من علامة تجارية قائمة في ماليزيا بدل ما تبدأ من الصفر. استشارة لتقييم الفرص المتاحة، رسوم الامتياز والالتزامات، والعائد المتوقع قبل ما تلتزم بعقد.' },
+      10:{ icon: '📦', title: 'الاستيراد من ماليزيا والصين وتركيا', desc: 'استشارة عملية لبناء خط استيراد: اختيار المصدر المناسب، التحقق من المورّدين، الشحن والجمارك، والإجراءات المطلوبة لتشغيل التجارة من ماليزيا.' },
+      4: { icon: '🎒', title: 'المدارس',                      desc: 'نساعدك في اختيار المدرسة المناسبة لأبنائك في ماليزيا — عربية، إسلامية، دولية، أو حكومية. الاستشارة بيقدمها خبراء متخصصون في التعليم من شركة «تعليم»، ومتابعة كاملة من الاستفسار حتى التسجيل.' },
+    };
+
+    const isCatA = [1, 2, 3, 4, 9].includes(ec);
+    const md = (isCatA && catAMeta[ec]) ? catAMeta[ec] : {};
+
+    const campLabel    = { '2weeks': 'أسبوعين', '1month': 'شهر كامل' };
+    const sponsorLabel = { bronze: 'برونز', silver: 'سيلفر', gold: 'جولد', custom: 'مخصصة' };
+    const tourPkgNames = {
+      A: '8 أيام / 7 ليالٍ — كوالالمبور ← جنتنج ← لنكاوي',
+      B: '8 أيام / 7 ليالٍ — كوالالمبور ← جنتنج ← كاميرون ← بينانج ← إيبوه',
+      C: '7 أيام / 6 ليالٍ — كوالالمبور ← جنتنج ← كاميرون ← بينانج ← إيبوه',
+      D: '9 أيام / 8 ليالٍ — كوالالمبور ← جنتنج ← كاميرون ← بينانج ← لنكاوي (يشمل طيران داخلي)',
+    };
+    const tourPrices = {
+      A: { '4': 1100, '5': 1800 },
+      B: { '4': 1300, '5': 1900 },
+      C: { '4': 1200, '5': 1700 },
+      D: { '4': 1600, '5': 2200 },
+    };
+
+    const selBorder = (v, cur) => cur === v ? '#0069CA' : '#E8E8E8';
+    const selBg     = (v, cur) => cur === v ? '#EEF5FD' : '#fff';
+
+    const dateVal = s.c6_date_type === 'exact'  ? s.c6_date  :
+                    s.c6_date_type === 'approx' ? s.c6_month : 'لم يُحدد';
+
+    return {
+      // ── Screens ──
+      bannerWave: (() => {
+        const d = 'M0 70 C 300 0, 300 0, 600 70 S 900 140, 1200 70 C 1500 0, 1500 0, 1800 70 S 2100 140, 2400 70 V 160 H 0 Z';
+        return React.createElement('div', { 'aria-hidden': true, style: { position: 'absolute', left: 0, right: 0, bottom: 0, height: 160, zIndex: 0, direction: 'ltr', pointerEvents: 'none', overflow: 'hidden', WebkitMaskImage: 'linear-gradient(to bottom, #000 55%, transparent 100%)', maskImage: 'linear-gradient(to bottom, #000 55%, transparent 100%)' } },
+          React.createElement('svg', { viewBox: '0 0 2400 160', preserveAspectRatio: 'none', style: { position: 'absolute', left: 0, top: 0, width: '200%', height: '100%', display: 'block', animation: 'tpWave 60s linear infinite' } },
+            React.createElement('path', { d, fill: '#F5F6F8' })),
+          React.createElement('svg', { viewBox: '0 0 2400 160', preserveAspectRatio: 'none', style: { position: 'absolute', left: 0, top: 22, width: '200%', height: '100%', display: 'block', overflow: 'visible', animation: 'tpWave 85s linear infinite reverse' } },
+            React.createElement('path', { d: 'M0 70 C 300 0, 300 0, 600 70 S 900 140, 1200 70 C 1500 0, 1500 0, 1800 70 S 2100 140, 2400 70', fill: 'none', stroke: '#E4E7EC', strokeWidth: 1.5, vectorEffect: 'non-scaling-stroke' })));
+      })(),
+      preloaderOn: s.preloader !== 'off',
+      preloaderOpacity: s.preloader === 'fading' ? 0 : 1,
+      preloaderLogo: React.createElement('img', { src: 'assets/logo.webp', alt: 'Telposhow', style: { height: 96, width: 'auto', animation: 'tpPulse 1.6s ease-in-out infinite' } }),
+      preloaderSpinner: React.createElement('div', { style: { width: 34, height: 34, borderRadius: '50%', border: '3px solid #E3EEFB', borderTopColor: '#0069CA', animation: 'tpSpin 0.8s linear infinite' } }),
+      showLanding:  s.segment === null && ec === null && !s.guideOpen,
+      showGuide:    s.segment === null && ec === null && !!s.guideOpen,
+      openGuide:  () => { this.setState({ guideOpen: true }); window.scrollTo({ top: 0 }); },
+      closeGuide: () => { this.setState({ guideOpen: false }); window.scrollTo({ top: 0 }); },
+      guideSections: GUIDE,
+      showFiltered: s.segment !== null && ec === null,
+      showDetail:   ec !== null,
+
+      // ── Landing navigation ──
+      goToTourism: () => { this.setState({ segment: 'tourism' }); window.scrollTo({ top: 0 }); },
+      goToStudy:   () => { this.setState({ segment: 'study'   }); window.scrollTo({ top: 0 }); },
+      goToSettle:  () => { this.setState({ segment: 'settle'  }); window.scrollTo({ top: 0 }); },
+      goToInvest:  () => { this.setState({ segment: 'invest'  }); window.scrollTo({ top: 0 }); },
+      goToSponsor: () => { this.setState({ segment: 'sponsor', expandedCard: 8, consultDuration: null }); window.scrollTo({ top: 0 }); },
+
+      // ── آراء العملاء ──
+      testimonials: this.testiData().map(t => ({ ...t, stars: '★★★★★', initial: t.name.trim().charAt(0) })),
+      testiTransform: `translateX(${s.testiIdx * 100}%)`,
+      testiDots: this.testiData().map((t, i) => ({
+        i,
+        w: s.testiIdx === i ? '22px' : '7px',
+        bg: s.testiIdx === i ? '#0069CA' : '#E2E8F0',
+      })),
+      goTesti: (e) => this.setState({ testiIdx: parseInt(e.currentTarget.dataset.testiIndex, 10) }),
+      prevTesti: () => this.setState(p => ({ testiIdx: (p.testiIdx - 1 + this.testiData().length) % this.testiData().length })),
+      nextTesti: () => this.setState(p => ({ testiIdx: (p.testiIdx + 1) % this.testiData().length })),
+
+      // ── FAQ ──
+      faqs: this.faqData().map(f => ({
+        ...f,
+        open: s.openFaq === f.id,
+        sign: s.openFaq === f.id ? '−' : '+',
+        border: s.openFaq === f.id ? '#C4DAF3' : '#EBEBEB',
+        bg: s.openFaq === f.id ? '#F7FAFE' : '#fff',
+      })),
+      toggleFaq: (e) => {
+        const id = e.currentTarget.dataset.faqId;
+        this.setState(p => ({ openFaq: p.openFaq === id ? null : id }));
+      },
+      waFooter: this.wa('مرحباً تلبوشو، عندي استفسار.'),
+
+      // ── Segment info ──
+      segmentColor:   sc.color,
+      segmentBadgeBg: sc.badgeBg,
+      segmentTitle:   sc.title,
+      segmentEmoji:   sc.emoji,
+      segmentSub:     sc.sub,
+
+      // ── Filtered cards ──
+      filteredCards: s.segment ? allCards.filter(c => c.seg === s.segment) : [],
+
+      // ── Card click ──
+      handleCardClick: (e) => {
+        const id = parseInt(e.currentTarget.dataset.cardId, 10);
+        this.toggle(id);
+      },
+
+      // ── Back ──
+      goBack: () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        if (ec !== null) {
+          // الرعاية الحصرية: ارجع للرئيسية مباشرة بدون الشاشة المفلترة
+          if (s.segment === 'sponsor') {
+            this.setState({ expandedCard: null, consultDuration: null, segment: null });
+          } else {
+            this.setState({ expandedCard: null, consultDuration: null });
+          }
+        } else {
+          this.setState({ segment: null });
+        }
+      },
+
+      // ── Detail ──
+      isCatA,
+      isSchools: ec === 4,
+      isResidency: ec === 1,
+      isRelocation: ec === 2,
+      isFranchise: ec === 9,
+      franchises: [
+        { id:'dkunafa', icon:'🍮', name:"D'Kunafa", status:'متاح للاستثمار', desc:'علامة حلويات شرقية متخصصة في الكنافة، بنموذج تشغيل جاهز ومناسب للأسواق العربية والماليزية.' },
+      ].map(f => ({ ...f, wa: this.wa(`مرحباً، أرغب في ملف مشروع الفرانشايز: ${f.name}`) })),
+      m5: ec === 5, m6: ec === 6, m7: ec === 7, m8: ec === 8, m10: ec === 10,
+
+      c10_product: s.c10_product, c10_source: s.c10_source, c10_dest: s.c10_dest,
+      c10_qty: s.c10_qty, c10_budget: s.c10_budget, c10_purpose: s.c10_purpose,
+      c10_company: s.c10_company, c10_timing: s.c10_timing, c10_name: s.c10_name, c10_notes: s.c10_notes,
+      setC10Product: (e) => this.set('c10_product', e.target.value),
+      setC10Source:  (e) => this.set('c10_source',  e.target.value),
+      setC10Dest:    (e) => this.set('c10_dest',    e.target.value),
+      setC10Qty:     (e) => this.set('c10_qty',     e.target.value),
+      setC10Budget:  (e) => this.set('c10_budget',  e.target.value),
+      setC10Purpose: (e) => this.set('c10_purpose', e.target.value),
+      setC10Company: (e) => this.set('c10_company', e.target.value),
+      setC10Timing:  (e) => this.set('c10_timing',  e.target.value),
+      setC10Name:    (e) => this.set('c10_name',    e.target.value),
+      setC10Notes:   (e) => this.set('c10_notes',   e.target.value),
+      c10_consultOpen: !!s.c10_consult,
+      c10_consultClosed: !s.c10_consult,
+      openC10Consult: () => this.setState({ c10_consult: true }),
+      closeC10Consult: () => this.setState({ c10_consult: false, consultDuration: null }),
+      c10_btnBg: (s.c10_product && s.c10_source && s.c10_name) ? '#25D366' : '#9CA3AF',
+      c10_btnLabel: (s.c10_product && s.c10_source && s.c10_name)
+        ? 'أرسل طلب الاستيراد عبر WhatsApp'
+        : '⚠️ أكمل: المنتجات · بلد المصدر · الاسم',
+      wa10: this.wa(`مرحباً، أرغب في إرسال طلب استيراد.\n\nالاسم: ${s.c10_name || 'لم يُحدد'}\nالمنتجات: ${s.c10_product || 'لم تُحدد'}\nبلد المصدر: ${s.c10_source || 'لم يُحدد'}\nبلد الوصول: ${s.c10_dest || 'لم يُحدد'}\nالكمية التقريبية: ${s.c10_qty || 'لم تُحدد'}\nالميزانية التقريبية: ${s.c10_budget || 'لم تُحدد'}\nالغرض: ${s.c10_purpose || 'لم يُحدد'}\nوضع الشركة: ${s.c10_company || 'لم يُحدد'}\nالتوقيت المتوقع: ${s.c10_timing || 'لم يُحدد'}\nملاحظات: ${s.c10_notes || '—'}`),
+      modalIcon:  md.icon  || '',
+      modalTitle: md.title || '',
+      modalDesc:  md.desc  || '',
+
+      // Duration selector
+      price30: ec === 1 ? '$60'  : '$30',
+      price60: ec === 1 ? '$100' : '$60',
+      showDurationSelector: ![3,4,9].includes(ec),
+      isFixedDuration:      [3,9].includes(ec),
+      fixedDurationLabel:   'استشارة 60 دقيقة متعمقة · $60',
+      hasDuration: s.consultDuration !== null,
+      setDuration30: () => this.openBookingWith('30'),
+      setDuration60: () => this.openBookingWith('60'),
+      openBooking: () => this.openBookingWith([1,2,4].includes(ec) ? (s.consultDuration || '60') : '60'),
+      closeBooking: () => this.closeBooking(),
+      bookingOpen: !!s.bookingOpen,
+      showDurationSwitch: [1,2,4].includes(ec),
+      bookingSummary: (() => { const d = s.consultDuration; if (!d) return ''; if ([5,7,8].includes(ec)) return 'اختر الموعد المناسب لك'; const p = (ec === 3 || ec === 10 || ec === 9) ? '$60' : (d === '30' ? (ec === 1 ? '$60' : '$30') : (ec === 1 ? '$100' : '$60')); return `استشارة ${d} دقيقة · ${p}`; })(),
+      sw30Bg: s.consultDuration === '30' ? '#0069CA' : 'transparent',
+      sw30Color: s.consultDuration === '30' ? '#fff' : '#475569',
+      sw60Bg: s.consultDuration === '60' ? '#0069CA' : 'transparent',
+      sw60Color: s.consultDuration === '60' ? '#fff' : '#475569',
+      dur30Border: s.consultDuration === '30' ? '#0069CA' : '#E8E8E8',
+      dur30Bg:     s.consultDuration === '30' ? '#EEF5FD' : '#fff',
+      dur60Border: s.consultDuration === '60' ? '#0069CA' : '#E8E8E8',
+      dur60Bg:     s.consultDuration === '60' ? '#EEF5FD' : '#fff',
+
+      // Calendly
+      calendlyEmbedUrl: (() => {
+        if (!s.consultDuration) return '';
+        const urls = {
+          1: { '30': 'https://calendly.com/telposhow/mm2h30',      '60': 'https://calendly.com/telposhow/mm2h-60-clone' },
+          2: { '30': 'https://calendly.com/telposhow/relocation30', '60': 'https://calendly.com/telposhow/relocation60' },
+          3: { '60': 'https://calendly.com/telposhow/30-clone-1' },
+          4: { '30': 'https://calendly.com/telposhow/schools30',    '60': 'https://calendly.com/telposhow/schools60' },
+          5: { '60': 'https://calendly.com/d/d2b3-rjm-bkk' },
+          7: { '60': 'https://calendly.com/d/d2pm-xw4-6py' },
+          8: { '60': 'https://calendly.com/d/dtg9-8wy-22d' },
+          9: { '60': 'https://calendly.com/telposhow/30-clone-1' },
+          10:{ '60': 'https://calendly.com/telposhow/import60' },
+        };
+        const base = urls[ec] && urls[ec][s.consultDuration];
+        if (!base) return '';
+        return `${base}?hide_event_type_details=1&hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=0069ca&text_color=2d3748&background_color=ffffff`;
+      })(),
+      waSupport: this.wa('مرحباً، أواجه مشكلة في الدفع عبر Calendly. هل يمكنكم مساعدتي؟'),
+
+      // Card 5
+      c5_need: s.c5_need,
+      setC5Need: (e) => this.set('c5_need', e.target.value),
+      wa5: this.wa(`مرحباً، أرغب في الاستفسار عن الدراسة الجامعية في ماليزيا.\n\nالاحتياج الدراسي:\n${s.c5_need || '(لم يُحدد بعد)'}`),
+
+      // Card 6 — tour packages + booking form + admin panel
+      c6_tourCards: this.buildTourCards(s.c6_expandedPkg, s.c6_pkg),
+      c6_bookingForm: s.c6_pkg ? this.buildBookingForm(s, this.buildCalendar(s.c6_date_from, s.c6_date_to, s.calYear, s.calMonth)) : null,
+      showAdmin: s.showAdmin,
+      adminPanel: s.showAdmin && s.adminPrices ? this.buildAdminPanel(s.adminPrices) : null,
+      openAdmin: () => this.setState({ showAdmin: true }),
+      hasTourPkg: !!s.c6_pkg,
+      selectedTourName: { A:'8 أيام | كوالالمبور · جنتنج · لنكاوي', B:'8 أيام | كوالالمبور · جنتنج · كاميرون · بينانج · إيبوه', C:'7 أيام | كوالالمبور · جنتنج · كاميرون · بينانج · إيبوه', D:'9 أيام | كوالالمبور · جنتنج · كاميرون · بينانج · لنكاوي' }[s.c6_pkg] || '',
+      clearTourPkg: () => this.setState({ c6_pkg: '', c6_star: '', c6_date_type:'', c6_date_from:'', c6_date_to:'', c6_date_confirmed:false, c6_month:'' }),
+      // Hotel stars
+      selStar4: () => this.set('c6_star', '4'),
+      selStar5: () => this.set('c6_star', '5'),
+      star4Border: selBorder('4', s.c6_star), star4Bg: selBg('4', s.c6_star),
+      star5Border: selBorder('5', s.c6_star), star5Bg: selBg('5', s.c6_star),
+      star4Price: s.c6_pkg ? `$${tourPrices[s.c6_pkg]['4'].toLocaleString()}` : '—',
+      star5Price: s.c6_pkg ? `$${tourPrices[s.c6_pkg]['5'].toLocaleString()}` : '—',
+      // Calendar
+      c6_calendar: this.buildCalendar(s.c6_date_from, s.c6_date_to, s.calYear, s.calMonth),
+      dateConfirmed: s.c6_date_confirmed,
+      dateNotConfirmed: !s.c6_date_confirmed,
+      clearDateConfirm: () => this.setState({ c6_date_confirmed: false, c6_date_from: '', c6_date_to: '' }),
+      confirmedDateLabel: (() => {
+        const mn = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+        const f = d => { if(!d) return ''; const [y,m,dd] = d.split('-'); return `${+dd} ${mn[+m-1]} ${y}`; };
+        return s.c6_date_from && s.c6_date_to ? `من ${f(s.c6_date_from)} — إلى ${f(s.c6_date_to)}` : '';
+      })(),
+      // Date
+      showExactDate:    s.c6_date_type === 'exact',
+      showApproxMonth:  s.c6_date_type === 'approx',
+      dateExactBorder:  s.c6_date_type === 'exact'  ? '#0069CA' : '#E8E8E8',
+      dateExactBg:      s.c6_date_type === 'exact'  ? '#EEF5FD' : '#fff',
+      dateExactRadio:   s.c6_date_type === 'exact'  ? '#0069CA' : '#CCC',
+      dateExactDot:     s.c6_date_type === 'exact'  ? '#0069CA' : 'transparent',
+      dateApproxBorder: s.c6_date_type === 'approx' ? '#0069CA' : '#E8E8E8',
+      dateApproxBg:     s.c6_date_type === 'approx' ? '#EEF5FD' : '#fff',
+      dateApproxRadio:  s.c6_date_type === 'approx' ? '#0069CA' : '#CCC',
+      dateApproxDot:    s.c6_date_type === 'approx' ? '#0069CA' : 'transparent',
+      setDateTypeExact:  () => this.set('c6_date_type', 'exact'),
+      setDateTypeApprox: () => this.set('c6_date_type', 'approx'),
+      c6_month: s.c6_month,
+      setC6Month: (e) => this.set('c6_month', e.target.value),
+      // People
+      c6_adults: s.c6_adults,
+      c6_children_count: s.c6_children_count, c6_children_ages: s.c6_children_ages,
+      hasChildren: parseInt(s.c6_children_count) > 0,
+      setC6Adults:        (e) => this.set('c6_adults',         e.target.value),
+      setC6ChildrenCount: (e) => this.set('c6_children_count', e.target.value),
+      setC6ChildrenAges:  (e) => this.set('c6_children_ages',  e.target.value),
+      // WhatsApp readiness
+      wa6Ready: !!(s.c6_star && s.c6_pkg && (
+        (s.c6_date_type === 'exact' && s.c6_date_confirmed) ||
+        (s.c6_date_type === 'approx' && s.c6_month)
+      )),
+      wa6NotReady: !(s.c6_star && s.c6_pkg && (
+        (s.c6_date_type === 'exact' && s.c6_date_confirmed) ||
+        (s.c6_date_type === 'approx' && s.c6_month)
+      )),
+      wa6MissingHint: (() => {
+        const missing = [];
+        if (!s.c6_star) missing.push('تصنيف الفندق');
+        if (!s.c6_date_type || (s.c6_date_type === 'exact' && !s.c6_date_confirmed) || (s.c6_date_type === 'approx' && !s.c6_month)) missing.push('الموعد');
+        return missing.length ? `يرجى تحديد: ${missing.join(' · ')}` : '';
+      })(),
+      // WhatsApp
+      wa6: (() => {
+        const monthNames2 = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+        const fmtD = d => { if(!d) return ''; const [y,m,dd] = d.split('-'); return `${+dd} ${monthNames2[+m-1]} ${y}`; };
+        const dateVal = s.c6_date_type === 'exact'
+          ? (s.c6_date_from && s.c6_date_to ? `من ${fmtD(s.c6_date_from)} إلى ${fmtD(s.c6_date_to)}` : s.c6_date_from ? `من ${fmtD(s.c6_date_from)} (العودة لم تُحدد)` : 'لم يُحدد')
+          : s.c6_date_type === 'approx' ? s.c6_month : 'لم يُحدد';
+        const price = s.c6_pkg && s.c6_star ? `$${tourPrices[s.c6_pkg][s.c6_star].toLocaleString()}` : 'لم يُحدد';
+        return this.wa(`مرحباً، أرغب في حجز رحلة سياحية إلى ماليزيا.\n\nالبرنامج: ${tourPkgNames[s.c6_pkg] || 'لم يُحدد'}\nتصنيف الفندق: ${s.c6_star ? s.c6_star + ' نجوم' : 'لم يُحدد'}\nالسعر التقريبي للشخص: ${price}\nموعد السفر: ${dateVal}\nعدد البالغين: ${s.c6_adults || 'لم يُحدد'}\nعدد الأطفال: ${s.c6_children_count || '0'}${parseInt(s.c6_children_count) > 0 ? `\nأعمار الأطفال: ${s.c6_children_ages || 'لم تُحدد'}` : ''}`);
+      })(),
+
+      // Card 7
+      c7_package: s.c7_package,
+      c7_count: s.c7_count,
+      camp1Border: selBorder('2weeks', s.c7_package), camp1Bg: selBg('2weeks', s.c7_package),
+      camp2Border: selBorder('1month', s.c7_package), camp2Bg: selBg('1month', s.c7_package),
+      selCamp1: () => this.set('c7_package', '2weeks'),
+      selCamp2: () => this.set('c7_package', '1month'),
+      incStudent: () => this.setState(s => ({ c7_count: s.c7_count + 1 })),
+      decStudent: () => this.setState(s => {
+        const n = Math.max(0, s.c7_count - 1);
+        const ages = { ...s.c7_ages };
+        delete ages[s.c7_count - 1];
+        return { c7_count: n, c7_ages: ages };
+      }),
+      c7_ageInputs: (() => {
+        if (s.c7_count === 0) return null;
+        return React.createElement('div', { style: { display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '20px' } },
+          ...Array.from({ length: s.c7_count }, (_, i) =>
+            React.createElement('div', { key: i, style: { display: 'flex', alignItems: 'center', gap: '12px', background: '#F7FAFE', borderRadius: '12px', padding: '10px 14px', border: '1.5px solid #D6E6F8' } },
+              React.createElement('span', { style: { fontSize: '13px', fontWeight: '700', color: '#0069CA', whiteSpace: 'nowrap' } }, `طالب ${i + 1}`),
+              React.createElement('input', {
+                type: 'number', min: '1', max: '25',
+                value: s.c7_ages[i] || '',
+                placeholder: 'العمر',
+                onChange: (e) => this.setState(prev => ({ c7_ages: { ...prev.c7_ages, [i]: e.target.value } })),
+                style: { flex: 1, border: '1.5px solid #E8E8E8', borderRadius: '8px', padding: '8px 12px', fontSize: '13px', color: '#1A1733', fontFamily: 'IBM Plex Sans Arabic, sans-serif', direction: 'rtl', textAlign: 'right' }
+              }),
+              React.createElement('span', { style: { fontSize: '12px', color: '#AAA' } }, 'سنة')
+            )
+          )
+        );
+      })(),
+      wa7: this.wa(`مرحباً، أرغب في تسجيل أولادي في مخيمات اللغة مع تلبوشو.\n\nعدد الطلاب: ${s.c7_count}\nالأعمار: ${Array.from({length: s.c7_count}, (_, i) => `طالب ${i+1}: ${s.c7_ages[i] || '؟'} سنة`).join('، ')}`),
+
+      // Card 8
+      c8_points: s.c8_points, c8_audience: s.c8_audience, c8_web: s.c8_web, c8_maps: s.c8_maps,
+      c8_instagram: s.c8_instagram, c8_facebook: s.c8_facebook, c8_tiktok: s.c8_tiktok,
+      c8_youtube: s.c8_youtube, c8_whatsapp: s.c8_whatsapp,
+      setC8Points:    (e) => this.set('c8_points',    e.target.value),
+      setC8Audience:  (e) => this.set('c8_audience',  e.target.value),
+      setC8Web:       (e) => this.set('c8_web',       e.target.value),
+      setC8Maps:      (e) => this.set('c8_maps',      e.target.value),
+      setC8Instagram: (e) => this.set('c8_instagram', e.target.value),
+      setC8Facebook:  (e) => this.set('c8_facebook',  e.target.value),
+      setC8Tiktok:    (e) => this.set('c8_tiktok',    e.target.value),
+      setC8Youtube:   (e) => this.set('c8_youtube',   e.target.value),
+      setC8Whatsapp:  (e) => this.set('c8_whatsapp',  e.target.value),
+      wa8: (() => {
+        const links = [
+          ['الموقع الإلكتروني', s.c8_web],
+          ['خرائط جوجل', s.c8_maps],
+          ['إنستجرام', s.c8_instagram],
+          ['فيسبوك', s.c8_facebook],
+          ['تيك توك', s.c8_tiktok],
+          ['يوتيوب', s.c8_youtube],
+          ['واتساب العمل', s.c8_whatsapp],
+        ].filter(([, v]) => v && v.trim()).map(([k, v]) => `  • ${k}: ${v}`).join('\n');
+        return this.wa(`مرحباً، أرغب في الاستفسار عن التسويق والرعاية.\n\nالنقاط البيعية: ${s.c8_points || 'لم تُحدد'}\nالفئة المستهدفة: ${s.c8_audience || 'لم تُحدد'}\nالروابط:\n${links || '  (لم تُحدد)'}`);
+      })(),
+    };
+  }
+}
+</script>
+</body>
+</html>
