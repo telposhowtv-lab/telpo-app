@@ -441,7 +441,7 @@ button,select{font-family:inherit}
             <div style="display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid #EEF2F8;font-size:14px"><span style="color:#5A6480">المدن</span><span style="font-weight:600">{{ prog.citiesCount }}</span></div>
             <div style="display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid #EEF2F8;font-size:14px"><span style="color:#5A6480">كود البرنامج</span><span dir="ltr" style="font-weight:600">{{ prog.code }}</span></div>
           </div>
-          <button onClick="{{ prog.book }}" style="display:flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(45deg,#0072FF,#22B5D8);color:#fff;border:0;border-radius:14px;padding:15px 20px;font-size:16px;font-weight:600;cursor:pointer" style-hover="background:linear-gradient(45deg,#005FD6,#1AA3C6)"><span style="font-family:'Material Symbols Rounded';font-size:21px;line-height:1">chat</span>احجز على واتساب</button>
+          <a href="{{ prog.bookHref }}" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(45deg,#0072FF,#22B5D8);color:#fff;border:0;border-radius:14px;padding:15px 20px;font-size:16px;font-weight:600;cursor:pointer" style-hover="background:linear-gradient(45deg,#005FD6,#1AA3C6)"><span style="font-family:'Material Symbols Rounded';font-size:21px;line-height:1">chat</span>احجز الآن</a>
           <span style="font-size:13px;line-height:1.7;color:#5A6480;text-align:center">لا دفع الآن. فريق الحجز يتواصل معك لتأكيد التفاصيل.</span>
           <div style="background:#F5F8FD;border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:4px;font-size:13.5px;line-height:1.7">
             <span style="font-weight:600">مسافرون أكثر من شخصين؟</span>
@@ -550,7 +550,7 @@ button,select{font-family:inherit}
               </sc-for>
             </div>
             <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:auto">
-              <button onClick="{{ rec.book }}" style="display:inline-flex;align-items:center;gap:10px;background:linear-gradient(45deg,#0072FF,#22B5D8);color:#fff;border:0;border-radius:999px;padding:13px 24px;font-size:15px;font-weight:600;cursor:pointer" style-hover="background:linear-gradient(45deg,#005FD6,#1AA3C6)"><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1">chat</span>احجز على واتساب</button>
+              <a href="{{ rec.bookHref }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;background:linear-gradient(45deg,#0072FF,#22B5D8);color:#fff;border:0;border-radius:999px;padding:13px 24px;font-size:15px;font-weight:600;cursor:pointer" style-hover="background:linear-gradient(45deg,#005FD6,#1AA3C6)"><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1">chat</span>احجز الآن</a>
               <button onClick="{{ rec.open }}" style="display:inline-flex;align-items:center;gap:8px;background:#fff;color:#0072FF;border:1px solid #BFDCFF;border-radius:999px;padding:13px 22px;font-size:15px;font-weight:600;cursor:pointer">تفاصيل البرنامج</button>
             </div>
           </div>
@@ -766,7 +766,7 @@ button,select{font-family:inherit}
                       <sc-for list="{{ h.perks }}" as="pk" hint-placeholder-count="4"><span style="display:inline-flex;align-items:center;gap:4px;background:#F2F5FA;color:#0E1B3D;font-size:12.5px;font-weight:600;padding:5px 10px;border-radius:999px"><span style="font-family:'Material Symbols Rounded';font-size:15px;line-height:1;color:#0072FF">check</span>{{ pk.t }}</span></sc-for>
                     </div>
                     <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px">
-                      <a href="{{ h.ask }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(45deg,#0072FF,#22B5D8);color:#fff;border-radius:10px;padding:9px 16px;font-size:13.5px;font-weight:600"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">chat</span>اسأل عن الحجز</a>
+                      <a href="{{ h.ask }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(45deg,#0072FF,#22B5D8);color:#fff;border-radius:10px;padding:9px 16px;font-size:13.5px;font-weight:600"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">chat</span>احجز الآن</a>
                       <a href="{{ h.map }}" target="_blank" rel="noopener" style="align-self:flex-start;display:inline-flex;align-items:center;gap:6px;border:1px solid #BFDCFF;color:#0060D6;border-radius:10px;padding:8px 14px;font-size:13.5px;font-weight:600"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">location_on</span>على الخريطة</a>
                     </div>
                   </div>
@@ -848,7 +848,7 @@ button,select{font-family:inherit}
             <div style="display:flex;gap:8px;flex-wrap:wrap">
               <button onClick="{{ ad.open }}" style="flex:1 1 120px;display:inline-flex;align-items:center;justify-content:center;gap:6px;background:linear-gradient(45deg,#0072FF,#22B5D8);color:#fff;border:0;border-radius:12px;padding:12px 14px;font-size:14.5px;font-weight:600;cursor:pointer">شوف البرنامج<span data-arrow="" style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">arrow_back</span></button>
               <sc-if value="{{ ad.custom }}" hint-placeholder-val="{{ false }}"><a href="{{ ad.waHref }}" target="_blank" rel="noopener" style="flex:1 1 120px;display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1px solid #BFDCFF;color:#0072FF;border-radius:12px;padding:12px 14px;font-size:14.5px;font-weight:600"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">chat</span>برنامج مخصص</a></sc-if>
-              <sc-if value="{{ ad.inProg }}" hint-placeholder-val="{{ true }}"><button onClick="{{ ad.book }}" style="flex:1 1 120px;display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1px solid #BFDCFF;background:#fff;color:#0072FF;border-radius:12px;padding:12px 14px;font-size:14.5px;font-weight:600;cursor:pointer"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">chat</span>احجز</button></sc-if>
+              <sc-if value="{{ ad.inProg }}" hint-placeholder-val="{{ true }}"><a href="{{ ad.bookHref }}" target="_blank" rel="noopener" style="flex:1 1 120px;display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1px solid #BFDCFF;background:#fff;color:#0072FF;border-radius:12px;padding:12px 14px;font-size:14.5px;font-weight:600;cursor:pointer"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">chat</span>احجز الآن</a></sc-if>
             </div>
             <sc-if value="{{ ad.hasMore }}" hint-placeholder-val="{{ false }}"><button onClick="{{ ad.more }}" style="align-self:flex-start;background:none;border:0;padding:0;color:#0072FF;font-size:13.5px;font-weight:600;cursor:pointer">{{ ad.moreLabel }}</button></sc-if>
           </div>
@@ -1581,7 +1581,15 @@ class Component extends DCLogic {
     return { p, why };
   }
 
-  card(p) { const u = (this.state.userImgs || {})[p.code]; const im = u || p.img; return Object.assign({}, p, { img: im, poster: !!im, noPoster: !im, open: () => this.go('program', { progId: p.code }), book: () => this.setState({ booking: p.code, fromQuiz: false, fromCity: null }) }); }
+  bookText(code, opts) {
+    const bp = BY[code]; if (!bp) return '';
+    let m = `مرحبًا، أرغب في حجز برنامج:\n${bp.name} (${bp.daysLabel})\nكود البرنامج: ${bp.code}\nكود الفيديو: ${this.vid()}`;
+    if (opts && opts.fromCity) m += `\nمن دليل: ${opts.fromCity}`;
+    if (opts && opts.fromQuiz) { const a = this.answersLabel(this.state.q); if (a) m += `\nإجاباتي: ${a}`; }
+    return m;
+  }
+  bookLink(code, opts) { return this.wa(this.bookText(code, opts)); }
+  card(p) { const u = (this.state.userImgs || {})[p.code]; const im = u || p.img; return Object.assign({}, p, { img: im, poster: !!im, noPoster: !im, open: () => this.go('program', { progId: p.code }), bookHref: this.bookLink(p.code), book: () => this.setState({ booking: p.code, fromQuiz: false, fromCity: null }) }); }
 
 
   cityCard(c) {
@@ -1601,7 +1609,7 @@ class Component extends DCLogic {
         line: `برنامج جاهز يشمل ${short} مع سيارة خاصة وسائق وفنادق محجوزة، بدل ما تجهّز كل شيء بنفسك.`,
         bannerTitle: `ما عندك وقت تجهّز رحلة ${short}؟`, bannerSub: `أرخص برنامج يشمل ${short} جاهز للحجز برسالة واتساب.`,
         hasMore: inc.length > 1, moreLabel: `و${inc.length - 1} ${inc.length - 1 === 1 ? 'برنامج آخر' : 'برامج أخرى'} تشمل ${short}`,
-        more: () => this.goPrograms(), open: () => this.go('program', { progId: p.code }), book: () => book(p.code) };
+        more: () => this.goPrograms(), open: () => this.go('program', { progId: p.code }), book: () => book(p.code), bookHref: this.bookLink(p.code, { fromCity: c.name }) };
     }
     const p = this.card(PROGRAMS[0]);
     const pt = SHOW_PRICES ? { priceTag: ` · ${p.priceLabel} رينجت`, priceFrom: ` · من ${p.priceLabel} رينجت` } : { priceTag: '', priceFrom: '' };
@@ -1740,7 +1748,7 @@ class Component extends DCLogic {
       nextLabel: s.step === STEPS.length - 1 ? 'اعرض الترشيح' : 'التالي',
       next: () => { if (!answered) return; if (s.step === STEPS.length - 1) { this.setState({ done: true }); window.scrollTo(0, 0); } else this.setState({ step: s.step + 1 }); },
 
-      rec: Object.assign({}, this.card(rec.p), { book: () => this.setState({ booking: rec.p.code, fromQuiz: true }) }),
+      rec: Object.assign({}, this.card(rec.p), { bookHref: this.bookLink(rec.p.code, { fromQuiz: true }), book: () => this.setState({ booking: rec.p.code, fromQuiz: true }) }),
       reasons: rec.why.map(text => ({ text })),
       answersLabel: this.answersLabel(q) || 'بدون تفضيلات',
       restart: () => this.setState({ q: { days: '', with: '', budget: '', interests: [] }, step: 0, done: false }),
