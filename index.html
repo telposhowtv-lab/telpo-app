@@ -1493,7 +1493,26 @@ class Component extends DCLogic {
         .catch(() => {});
     });
   }
-  componentDidUpdate() { this.loadPlaylists(); }
+  componentDidUpdate() { this.loadPlaylists(); this.syncUrl(); }
+  applyUrl() {
+    const p = new URLSearchParams(location.search);
+    const c = p.get('city'), pr = p.get('program'), pg = p.get('page');
+    if (c && BY_SLUG[c]) this.setState({ screen: 'city', city: c, booking: null });
+    else if (pr && BY[pr]) this.setState({ screen: 'program', progId: pr, booking: null });
+    else if (pg && ['cities', 'quiz', 'about'].includes(pg)) this.setState({ screen: pg, booking: null });
+    else if (this.state.screen !== 'home') this.setState({ screen: 'home', booking: null });
+  }
+  syncUrl() {
+    try {
+      const s = this.state, p = new URLSearchParams(location.search);
+      ['city', 'program', 'page'].forEach(k => p.delete(k));
+      if (s.screen === 'city') p.set('city', s.city);
+      else if (s.screen === 'program') p.set('program', s.progId);
+      else if (s.screen !== 'home') p.set('page', s.screen);
+      const qs = p.toString(), url = location.pathname + (qs ? '?' + qs : '') + location.hash;
+      if (url !== location.pathname + location.search + location.hash) history.pushState(null, '', url);
+    } catch (e) {}
+  }
   yt(raw) {
     const url = (raw || '').trim();
     const m = url.match(/(?:youtu\.be\/|v=|\/shorts\/|\/embed\/|\/live\/)([\w-]{11})/); const vid = m && m[1];
@@ -1505,7 +1524,9 @@ class Component extends DCLogic {
   }
   componentDidMount() {
     this.loadPlaylists();
-    try { const c = new URLSearchParams(location.search).get('city'); if (c && BY_SLUG[c]) this.setState({ screen: 'city', city: c }); } catch (e) {}
+    try { this.applyUrl(); } catch (e) {}
+    this.onPop = () => { try { this.applyUrl(); window.scrollTo(0, 0); } catch (e) {} };
+    window.addEventListener('popstate', this.onPop);
     this.onResize = () => { const m = window.innerWidth < 768; if (m !== !!this.state.mobile) this.setState({ mobile: m, menu: false }); };
     window.addEventListener('resize', this.onResize); this.onResize();
     this.blurTimer = setInterval(() => { this.syncBlur(); this.syncPosters(); }, 600);
@@ -1521,7 +1542,7 @@ class Component extends DCLogic {
     const el = this.headerRef.current;
     if (el && window.ResizeObserver) { this.ro = new ResizeObserver(() => { const hh = el.offsetHeight; if (hh && hh !== this.state.headerH) this.setState({ headerH: hh }); }); this.ro.observe(el); }
   }
-  componentWillUnmount() { window.removeEventListener('resize', this.onResize); clearInterval(this.blurTimer); window.removeEventListener('keydown', this.onKey); window.removeEventListener('scroll', this.onScroll); clearInterval(this.timer); if (this.ro) this.ro.disconnect(); clearTimeout(this.adv); }
+  componentWillUnmount() { window.removeEventListener('popstate', this.onPop); window.removeEventListener('resize', this.onResize); clearInterval(this.blurTimer); window.removeEventListener('keydown', this.onKey); window.removeEventListener('scroll', this.onScroll); clearInterval(this.timer); if (this.ro) this.ro.disconnect(); clearTimeout(this.adv); }
 
   showSlide(i) { const n = HERO.length; i = (i + n) % n; this.setState(s => ({ slide: i, seen: Array.from(new Set(s.seen.concat([i, (i + 1) % n]))) })); }
   startSlides() { clearInterval(this.timer); this.timer = setInterval(() => { if (!document.hidden) this.showSlide(this.state.slide + 1); }, 6000); }
