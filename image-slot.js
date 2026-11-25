@@ -1097,7 +1097,11 @@
       if (stored && stored.u && !/^data:image\//i.test(stored.u)) stored = null;
       const srcAttr = this.getAttribute('src') || '';
       this._userUrl = (stored && stored.u) || null;
-      const url = this._userUrl || srcAttr;
+      // An unrendered template binding ("{{ city.img }}") is not a URL yet.
+      // image-slot.js loads inside <x-dc>, so the raw template's slots
+      // connect before support.js fills them; loading the literal text
+      // fired a 404 per slot on every page view. Wait for the real value.
+      const url = /\{\{/.test(this._userUrl || srcAttr) ? '' : (this._userUrl || srcAttr);
       // Don't clobber an in-flight reframe with a store-triggered re-render.
       if (!this.hasAttribute('data-reframe')) {
         this._view = {

@@ -3,6 +3,34 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/svg+xml" href="./assets/logo.svg">
+<script>
+/* Microsoft Clarity: heatmaps, session recordings, rage/dead clicks.
+   Put the Project ID from clarity.microsoft.com in CLARITY_ID. Loads only on the live domain,
+   so local previews never pollute the data. */
+(function () {
+  var CLARITY_ID = "zj5rz8rxjb";
+  var live = /(^|\.)telposhow\.com$/.test(location.hostname);
+  window.clarity = window.clarity || function () { (window.clarity.q = window.clarity.q || []).push(arguments); };
+  if (live && !/^CLARITY_/.test(CLARITY_ID)) {
+    var t = document.createElement("script"); t.async = 1; t.src = "https://www.clarity.ms/tag/" + CLARITY_ID;
+    document.head.appendChild(t);
+  }
+  /* The conversion that matters: a tap on any WhatsApp link. Captured on document so it also
+     catches links rendered later by support.js. Shows up in Clarity as the custom event
+     "whatsapp_click", filterable in recordings and heatmaps. */
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest('a[href*="wa.me/"], a[href*="api.whatsapp.com"]');
+    if (!a) return;
+    var msg = "";
+    try { msg = new URL(a.href).searchParams.get("text") || ""; } catch (_) {}
+    var q = new URLSearchParams(location.search);
+    window.clarity("set", "wa_page", q.get("program") || q.get("city") || q.get("page") || "home");
+    window.clarity("set", "wa_message", msg.slice(0, 80));
+    window.clarity("event", "whatsapp_click");
+  }, true);
+})();
+</script>
 <script src="./support.js"></script>
 </head>
 <body>
