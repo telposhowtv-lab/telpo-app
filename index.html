@@ -800,6 +800,7 @@ button,select{font-family:inherit}
                     </div>
                     <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px">
                       <a href="{{ h.ask }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(45deg,#0072FF,#22B5D8);color:#fff;border-radius:10px;padding:9px 16px;font-size:13.5px;font-weight:600"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">chat</span>احجز الآن</a>
+                      <sc-if value="{{ h.hasSite }}" hint-placeholder-val="{{ true }}"><a href="{{ h.site }}" target="_blank" rel="noopener" style="align-self:flex-start;display:inline-flex;align-items:center;gap:6px;border:1px solid #BFDCFF;color:#0060D6;border-radius:10px;padding:8px 14px;font-size:13.5px;font-weight:600"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">language</span>موقع الفندق</a></sc-if>
                       <a href="{{ h.map }}" target="_blank" rel="noopener" style="align-self:flex-start;display:inline-flex;align-items:center;gap:6px;border:1px solid #BFDCFF;color:#0060D6;border-radius:10px;padding:8px 14px;font-size:13.5px;font-weight:600"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">location_on</span>على الخريطة</a>
                     </div>
                   </div>
@@ -884,11 +885,11 @@ button,select{font-family:inherit}
     </div>
   </div>
   <sc-if value="{{ mobileAdBar }}" hint-placeholder-val="{{ false }}">
-    <div style="position:fixed;left:12px;right:12px;bottom:12px;z-index:40;background:#fff;border-radius:16px;box-shadow:0 14px 40px rgba(14,27,61,.25);padding:10px 10px 10px 14px;display:flex;align-items:center;gap:10px">
-      <span style="flex:none;width:40px;height:40px;border-radius:12px;background:#E5F1FF;color:#0072FF;display:grid;place-items:center"><span style="font-family:'Material Symbols Rounded';font-size:22px;line-height:1">luggage</span></span>
-      <span style="flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.35"><span style="font-size:12px;color:#5A6480;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ ad.kicker }}</span><span style="font-size:14.5px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ ad.p.name }}{{ ad.priceFrom }}</span></span>
-      <button onClick="{{ ad.open }}" style="flex:none;background:linear-gradient(45deg,#0072FF,#22B5D8);color:#fff;border:0;border-radius:12px;padding:10px 14px;font-size:14px;font-weight:600;cursor:pointer">شوف</button>
-      <button onClick="{{ hideAdBar }}" aria-label="إخفاء" style="flex:none;width:32px;height:32px;border-radius:50%;border:0;background:#F2F5FA;color:#5A6480;display:grid;place-items:center;cursor:pointer"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">close</span></button>
+    <div style="position:fixed;left:12px;right:12px;bottom:12px;z-index:40;background:linear-gradient(45deg,#0072FF,#22B5D8);color:#fff;border-radius:16px;box-shadow:0 14px 40px rgba(0,82,204,.38);padding:10px 10px 10px 14px;display:flex;align-items:center;gap:10px">
+      <span style="flex:none;width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,.18);color:#fff;display:grid;place-items:center"><span style="font-family:'Material Symbols Rounded';font-size:22px;line-height:1">luggage</span></span>
+      <span style="flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.35"><span style="font-size:12px;color:#E3F0FF;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ ad.kicker }}</span><span style="font-size:14.5px;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ ad.p.name }}{{ ad.priceFrom }}</span></span>
+      <button onClick="{{ ad.open }}" style="flex:none;background:#fff;color:#0060D6;border:0;border-radius:12px;padding:10px 14px;font-size:14px;font-weight:700;cursor:pointer">شوف</button>
+      <button onClick="{{ hideAdBar }}" aria-label="إخفاء" style="flex:none;width:32px;height:32px;border-radius:50%;border:0;background:rgba(255,255,255,.18);color:#fff;display:grid;place-items:center;cursor:pointer"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">close</span></button>
     </div>
   </sc-if>
 </sc-if>
@@ -1068,7 +1069,7 @@ const GUIDES = {
       ['المساء', 'عشاء، ثم رحلة نهر ملاكا والتمشية الليلية بين الأضواء.', 'meal']
     ],
     stay: [
-      ['فندق المظفر (Hotel Muzaffar)', 'استضافنا الفندق في الحلقة. يبعد 16 إلى 18 دقيقة بالسيارة عن وسط المدينة، بعيدًا عن الزحمة. ديكور إسلامي وسقف عالٍ، وغرف عادية واسعة، وأجنحة ملكية أغلى سعرًا، وإطلالة على السفينة. بعض الأثاث قديم نسبيًا.', { sponsor: true, perks: ['مصلى', 'حمام سباحة', 'كافتيريا', 'أجنحة ملكية', 'بجوار معرض السفينة'], map: 'https://www.google.com/maps/search/?api=1&query=Hotel+Muzaffar+Melaka', img: 'assets/cities/stay-melaka-1.webp' }],
+      ['فندق المظفر (Hotel Muzaffar)', 'استضافنا الفندق في الحلقة. يبعد 16 إلى 18 دقيقة بالسيارة عن وسط المدينة، بعيدًا عن الزحمة. ديكور إسلامي وسقف عالٍ، وغرف عادية واسعة، وأجنحة ملكية أغلى سعرًا، وإطلالة على السفينة. بعض الأثاث قديم نسبيًا.', { sponsor: true, perks: ['مصلى', 'حمام سباحة', 'كافتيريا', 'أجنحة ملكية', 'بجوار معرض السفينة'], map: 'https://www.google.com/maps/search/?api=1&query=Hotel+Muzaffar+Melaka', site: 'https://mudzaffarhotel.com/', img: 'assets/cities/stay-melaka-1.webp' }],
       ['ذا آبل ملاكا (The Apple Melaka)', 'خيار داخل المدينة، قريب من المنطقة السياحية.', { map: 'https://maps.app.goo.gl/1xM9n9SE3KJGM5p26' }],
       ['فندق باي فيو ملاكا (Bayview Hotel Melaka)', 'خيار داخل المدينة، قريب من المنطقة السياحية.', { map: 'https://maps.app.goo.gl/92jujpf5i9XC4G4q6' }],
       ['دبل تري باي هيلتون ملاكا (DoubleTree by Hilton Melaka)', 'خيار داخل المدينة من سلسلة هيلتون.', { map: 'https://www.google.com/maps/search/?api=1&query=DoubleTree+by+Hilton+Melaka' }]
@@ -1679,7 +1680,7 @@ class Component extends DCLogic {
     // place images: x[3] = image set in the guide, else the Pexels one from PLACE_IMG; x[4] sets the caption credit.
     const lst = (a, sec) => (a || []).filter(x => x && x[0]).map((x, i, arr) => { const stock = sec === 'place' && !x[3] ? PLACE_IMG[`${c.slug}-${i + 1}`] || '' : ''; const img = x[3] || stock; const credit = typeof x[4] === 'string' ? x[4] : stock ? 'Pexels' : ''; return { img, hasImg: !!img, credit, hasCredit: !!credit, infoIcon: infoIcon(x[2]), n: i + 1, key: `${sec}-${c.slug}-${i + 1}`, name: x[0], note: x[1] || '', info: x[2] || '', hasInfo: !!x[2], dot: x[2] === 'meal' ? '#F08A00' : x[2] === 'rest' ? '#22B5D8' : '#0072FF', isBreak: x[2] === 'meal' || x[2] === 'rest', breakIcon: x[2] === 'meal' ? 'restaurant' : 'bed', breakLabel: x[2] === 'meal' ? 'وجبة' : 'راحة', line: i < arr.length - 1 ? 1 : 0 }; });
     const plan = lst(g.plan, 'plan');
-    const stayAll = (g.stay || []).filter(x => x && x[0]).map((x, i) => { const o = (x[2] && typeof x[2] === 'object') ? x[2] : {}; return { key: `stay-${c.slug}-${i + 1}`, name: x[0], note: x[1] || '', sponsor: !!o.sponsor, img: o.img || '', perks: (o.perks || []).map(t => ({ t })), map: o.map || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(x[0] + ' ' + c.name)}`, ask: this.wa(`مرحبًا، أرغب في الاستفسار عن الإقامة في ${x[0]}\nمن دليل: ${c.name}`) }; });
+    const stayAll = (g.stay || []).filter(x => x && x[0]).map((x, i) => { const o = (x[2] && typeof x[2] === 'object') ? x[2] : {}; return { key: `stay-${c.slug}-${i + 1}`, name: x[0], note: x[1] || '', sponsor: !!o.sponsor, img: o.img || '', site: o.site || '', hasSite: !!o.site, perks: (o.perks || []).map(t => ({ t })), map: o.map || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(x[0] + ' ' + c.name)}`, ask: this.wa(`مرحبًا، أرغب في الاستفسار عن الإقامة في ${x[0]}\nمن دليل: ${c.name}`) }; });
     const places = lst(g.places, 'place'), stay = lst(g.stay), food = lst(g.food), tips = lst(g.tips);
     const video = this.yt(g.video);
     const dash = 'يُضاف قريبًا';
